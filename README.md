@@ -1,6 +1,6 @@
 # Score-based Generative Modeling of Graphs via the System of Stochastic Differential Equations
 
-Official Code Repository for the paper "Score-based Generative Modeling of Graphs via the System of Stochastic Differential Equations" ():https://arxiv.org/abs/2202.02514.
+Official Code Repository for the paper "Score-based Generative Modeling of Graphs via the System of Stochastic Differential Equations" :https://arxiv.org/abs/2202.02514.
 
 In this repository, we implement the *Graph Diffusion via the System of SDEs* (GDSS).
 
@@ -35,7 +35,7 @@ To generate the datasets  for training models, please run the following line:
 sh ./scirpts/data.sh dataset_name
 ```
 
-We provide four datasets: Ego-small, Community_small, ENZYMES, and Grid.
+We provide four generic graph datasets: Ego-small, Community_small, ENZYMES, and Grid.
 To reproduce our results, please use the provided data.
 
 To compile the ORCA program (see http://www.biolab.si/supp/orca/orca.html) for the evaluation, please run the following lines:
@@ -75,7 +75,23 @@ sh ./scripts/sample.sh 0 42
 The configurations are in the `config/` directory in the `YAML` format. 
 Hyperparameters used in the experiments are specified in the Appendix C. in our paper.
 
+## Pretrained checkpoints
+
+We additionally provide checkpoints of the pretrained models on ZINC250k dataset [here](https://drive.google.com/drive/folders/1gSM66ZZVfyUcFYkSAKmWl97M4YY8mKUu?usp=sharing).
 
 ## Citation
 
 If you found the provided code with our paper useful in your work, we kindly request that you cite our work.
+
+```BibTex
+@article{jo2022GDSS,
+  author    = {Jaehyeong Jo and
+               Seul Lee and
+               Sung Ju Hwang},
+  title     = {Score-based Generative Modeling of Graphs via the System of Stochastic
+               Differential Equations},
+  journal   = {arXiv:2202.02514},
+  year      = {2022},
+  url       = {https://arxiv.org/abs/2202.02514}
+}
+```
