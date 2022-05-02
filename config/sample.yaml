@@ -1,0 +1,19 @@
+data: 
+  data: ego_small
+  dir: './data'
+
+ckpt: Apr11-12:39:27
+
+sampler:
+  predictor: Euler
+  corrector: Langevin
+  snr: 0.05
+  scale_eps: 0.4
+  n_steps: 1
+
+sample:
+  use_ema: False
+  noise_removal: True
+  probability_flow: False
+  eps: 1.0e-4
+  seed: 12

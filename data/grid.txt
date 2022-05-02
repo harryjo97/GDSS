@@ -1,0 +1,1 @@
+{"graph_type": "grid", "possible_params_dict": {"m": [10, 11, 12, 13, 14, 15, 16, 17, 18, 19], "n": [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]}, "corrupt_func": null, "length": 100, "save_dir": "data", "file_name": "grid_big", "max_node": null, "min_node": null}max node number: 361

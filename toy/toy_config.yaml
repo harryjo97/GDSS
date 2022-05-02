@@ -1,0 +1,48 @@
+data:
+  coms: 
+    - 0.5
+    - 0.5
+  rho: 0.9
+  norm: 0.01
+
+model:
+  x1:
+    num_layers: 20
+    input_dim: 2
+    hidden_dim: 512
+    output_dim: 1
+  x2:
+    num_layers: 20
+    input_dim: 2
+    hidden_dim: 512
+    output_dim: 1 
+
+sde1:
+  type: VP
+  beta_min: 0.01
+  beta_max: 0.05
+  num_scales: 1000
+
+sde2:
+  type: VP
+  beta_min: 0.01
+  beta_max: 0.05
+  num_scales: 1000
+
+train:
+  epochs: 5000
+  lr: 0.01
+  batch_size: 2048
+  val_batch_size: 512
+  reduce_mean: True
+  eps: 1.0e-5
+
+sample:
+  num_sampling_rounds: 4
+  predictor: Euler
+  corrector: Langevin
+  snr: 0.05
+  scale_eps: 0.8
+  n_steps: 1
+  eps: 1.0e-4
+

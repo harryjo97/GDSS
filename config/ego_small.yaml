@@ -1,0 +1,62 @@
+data: 
+  data: ego_small
+  dir: './data'
+  batch_size: 128 
+  test_split: 0.2
+  max_node_num: 18
+  max_feat_num: 17
+  init: deg
+
+sde:
+  x: 
+    type: VP
+    beta_min: 0.1
+    beta_max: 1.0
+    num_scales: 1000
+  adj: 
+    type: VP
+    beta_min: 0.1
+    beta_max: 1.0
+    num_scales: 1000
+
+model:
+  x: ScoreNetworkX
+  adj: ScoreNetworkA
+  conv: GCN
+  num_heads: 4
+  depth: 2
+  adim: 32
+  nhid: 32
+  num_layers: 5
+  num_linears: 2
+  c_init: 2
+  c_hid: 8
+  c_final: 4
+  
+train:
+  name: test
+  num_epochs: 5000
+  save_interval: 5000
+  print_interval: 1000
+  reduce_mean: False
+  lr: 0.01
+  lr_schedule: True
+  ema: 0.999
+  weight_decay: 0.0001
+  grad_norm: 1.0
+  lr_decay: 0.999
+  eps: 1.0e-5
+
+sampler:
+  predictor: Euler
+  corrector: None
+  snr: 0.0
+  scale_eps: 0.0
+  n_steps: 1
+
+sample:
+  use_ema: False
+  noise_removal: True
+  probability_flow: False
+  eps: 1.0e-4
+  seed: 12
