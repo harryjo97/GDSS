@@ -1,6 +1,6 @@
 # Score-based Generative Modeling of Graphs via the System of Stochastic Differential Equations
 
-Official Code Repository for the paper "Score-based Generative Modeling of Graphs via the System of Stochastic Differential Equations" :https://arxiv.org/abs/2202.02514.
+Official Code Repository for the paper "Score-based Generative Modeling of Graphs via the System of Stochastic Differential Equations": https://arxiv.org/abs/2202.02514 (To appear at ICML 2022).
 
 In this repository, we implement the *Graph Diffusion via the System of SDEs* (GDSS).
 
