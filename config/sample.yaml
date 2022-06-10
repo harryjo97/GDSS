@@ -2,7 +2,7 @@ data:
   data: ZINC250k
   dir: './data'
 
-ckpt: Jun09-05:39:46
+ckpt: gdss_zinc250k
 
 sampler:
   predictor: Reverse
