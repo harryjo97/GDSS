@@ -1,6 +1,4 @@
 import os
-from utils.loader import load_model_params
-import pdb
 
 class Logger:
     def __init__(self, filepath, mode, lock=None):
@@ -79,25 +77,24 @@ def model_log(logger, config):
     logger.log(model_log)
 
 
-def start_log(logger, config, is_train=True):
+def start_log(logger, config):
     logger.log('-'*100)
     data_log(logger, config)
     logger.log('-'*100)
 
 
 def train_log(logger, config):
-    # sde_log(logger, config.sde)
     logger.log(f'lr={config.train.lr} schedule={config.train.lr_schedule} ema={config.train.ema} '
-                f'epochs={config.train.num_epochs} reduce={config.train.reduce_mean} eps={config.train.eps}')
+               f'epochs={config.train.num_epochs} reduce={config.train.reduce_mean} eps={config.train.eps}')
     model_log(logger, config)
     sde_log(logger, config.sde)
     logger.log('-'*100)
 
 
 def sample_log(logger, config):
-    sample_log = f"({config.sampler.predictor})+({config.sampler.corrector}): "\
-                    f"eps={config.sample.eps} denoise={config.sample.noise_removal} "\
-                    f"ema={config.sample.use_ema} "
+    sample_log = f"({config.sampler.predictor})+({config.sampler.corrector}): " \
+                 f"eps={config.sample.eps} denoise={config.sample.noise_removal} " \
+                 f"ema={config.sample.use_ema} "
     if config.sampler.corrector == 'Langevin':
         sample_log += f'|| snr={config.sampler.snr} seps={config.sampler.scale_eps} '\
                         f'n_steps={config.sampler.n_steps} '

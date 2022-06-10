@@ -5,7 +5,7 @@ import numpy as np
 import torch
 
 from utils.loader import load_seed, load_device, load_data, load_model_params, load_model_optimizer, \
-                            load_ema, load_loss_fn, load_batch
+                         load_ema, load_loss_fn, load_batch
 from utils.logger import Logger, set_log, start_log, train_log
 
 
@@ -56,6 +56,7 @@ class Trainer(object):
 
             self.model_x.train()
             self.model_adj.train()
+
             for _, train_b in enumerate(self.train_loader):
 
                 self.optimizer_x.zero_grad()
@@ -110,13 +111,13 @@ class Trainer(object):
             mean_test_adj = np.mean(self.test_adj)
 
             # -------- Log losses --------
-            logger.log(f'{epoch:03d}|{time.time()-t_start:.2f}s| '
-                        f'test x: {mean_test_x:.3e}| test adj: {mean_test_adj:.3e}| '
-                        f'train x: {mean_train_x:.3e}| train adj: {mean_train_adj:.3e}| ', verbose=False)
+            logger.log(f'{epoch+1:03d} | {time.time()-t_start:.2f}s | '
+                        f'test x: {mean_test_x:.3e} | test adj: {mean_test_adj:.3e} | '
+                        f'train x: {mean_train_x:.3e} | train adj: {mean_train_adj:.3e} | ', verbose=False)
 
             # -------- Save checkpoints --------
             if epoch % self.config.train.save_interval == self.config.train.save_interval-1:
-                save_name = f'_{epoch+1}' if epoch<self.config.train.num_epochs-1 else ''
+                save_name = f'_{epoch+1}' if epoch < self.config.train.num_epochs - 1 else ''
 
                 torch.save({ 
                     'model_config': self.config,

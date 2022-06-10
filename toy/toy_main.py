@@ -126,10 +126,10 @@ class Sampler(object):
 
 
 if __name__=='__main__':
-
+    
     parser = argparse.ArgumentParser(description='Toy experiment')
     parser.add_argument('--config', type=str, default='toy/toy_config.yaml')
-    parser.add_argument('--gpu', type=int, default=-1)
+    parser.add_argument('--gpu', type=int, default=0)
     parser.add_argument('--seed', type=int, default=42)
     args = parser.parse_args()
     config = edict(yaml.load(open(args.config, 'r'), Loader=yaml.FullLoader))

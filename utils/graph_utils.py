@@ -58,9 +58,10 @@ def init_features(init, adjs=None, nfeat=10):
     return mask_x(feature, flags)
 
 
-def init_flags(graph_list, config):
-    max_node_num = config.data.max_node_num 
-    batch_size = config.data.batch_size
+def init_flags(graph_list, config, batch_size=None):
+    if batch_size is None:
+        batch_size = config.data.batch_size
+    max_node_num = config.data.max_node_num
     graph_tensor = graphs_to_tensor(graph_list, max_node_num)
     idx = np.random.randint(0, len(graph_list), batch_size)
     flags = node_flags(graph_tensor[idx])
@@ -82,6 +83,18 @@ def gen_noise(x, flags, sym=True):
 def quantize(adjs, thr=0.5):
     adjs_ = torch.where(adjs < thr, torch.zeros_like(adjs), torch.ones_like(adjs))
     return adjs_
+
+
+def quantize_mol(adjs):                         # adjs: 32, 9, 9
+    if type(adjs).__name__ == 'Tensor':
+        adjs = adjs.detach().cpu()
+    else:
+        adjs = torch.tensor(adjs)
+    adjs[adjs >= 2.5] = 3
+    adjs[torch.bitwise_and(adjs >= 1.5, adjs < 2.5)] = 2
+    adjs[torch.bitwise_and(adjs >= 0.5, adjs < 1.5)] = 1
+    adjs[adjs < 0.5] = 0
+    return np.array(adjs.to(torch.int64))
 
 
 def adjs_to_graphs(adjs, is_cuda=False):

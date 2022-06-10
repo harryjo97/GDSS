@@ -1,14 +1,14 @@
 data: 
-  data: ego_small
+  data: ZINC250k
   dir: './data'
 
-ckpt: Apr11-12:39:27
+ckpt: Jun09-05:39:46
 
 sampler:
-  predictor: Euler
+  predictor: Reverse
   corrector: Langevin
-  snr: 0.05
-  scale_eps: 0.4
+  snr: 0.2
+  scale_eps: 0.9
   n_steps: 1
 
 sample:
@@ -16,4 +16,4 @@ sample:
   noise_removal: True
   probability_flow: False
   eps: 1.0e-4
-  seed: 12
+  seed: 42

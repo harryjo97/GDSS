@@ -5,6 +5,8 @@ import numpy as np
 import pyemd
 from scipy.linalg import toeplitz
 
+from sklearn.metrics.pairwise import pairwise_kernels
+from eden.graph import vectorize
 
 # NOTES:
 # EMD stands for earth move distance, i.e. Wasserstein metric,
@@ -107,6 +109,21 @@ def compute_emd(samples1, samples2, kernel, is_hist=True, *args, **kwargs):
         samples1 = [np.mean(samples1)]
         samples2 = [np.mean(samples2)]
     return disc(samples1, samples2, kernel, *args, **kwargs), [samples1[0], samples2[0]]
+
+
+### code adapted from https://github.com/idea-iitd/graphgen/blob/master/metrics/mmd.py
+def compute_nspdk_mmd(samples1, samples2, metric, is_hist=True, n_jobs=None):
+    def kernel_compute(X, Y=None, is_hist=True, metric='linear', n_jobs=None):
+        X = vectorize(X, complexity=4, discrete=True)
+        if Y is not None:
+            Y = vectorize(Y, complexity=4, discrete=True)
+        return pairwise_kernels(X, Y, metric='linear', n_jobs=n_jobs)
+
+    X = kernel_compute(samples1, is_hist=is_hist, metric=metric, n_jobs=n_jobs)
+    Y = kernel_compute(samples2, is_hist=is_hist, metric=metric, n_jobs=n_jobs)
+    Z = kernel_compute(samples1, Y=samples2, is_hist=is_hist, metric=metric, n_jobs=n_jobs)
+
+    return np.average(X) + np.average(Y) - 2 * np.average(Z)
 
 
 def process_tensor(x, y):
