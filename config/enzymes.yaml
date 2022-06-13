@@ -59,8 +59,4 @@ sample:
   noise_removal: True
   probability_flow: False
   eps: 1.0e-4
-<<<<<<< HEAD
   seed: 12
-=======
-  seed: 11
->>>>>>> origin/mol
