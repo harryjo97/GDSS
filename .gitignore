@@ -1,6 +1,5 @@
 # 
 *.pyc
-checkpoints/
 logs_sample/
 logs_train/
 samples/

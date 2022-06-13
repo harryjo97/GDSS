@@ -1,5 +1,4 @@
 import math
-import torch
 import networkx as nx
 import numpy as np
 import os

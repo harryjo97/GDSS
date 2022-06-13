@@ -1,16 +1,13 @@
 import torch
 import random
 import numpy as np
-import math
 
-from utils.data_loader import dataloader
 from models.ScoreNetwork_A import ScoreNetworkA
-from models.ScoreNetwork_X import ScoreNetworkX
+from models.ScoreNetwork_X import ScoreNetworkX, ScoreNetworkX_GMH
 from sde import VPSDE, VESDE, subVPSDE
 
 from losses import get_sde_loss_fn
 from solver import get_pc_sampler, S4_solver
-from utils.graph_utils import quantize
 from evaluation.mmd import gaussian, gaussian_emd
 from utils.ema import ExponentialMovingAverage
 
@@ -43,9 +40,11 @@ def load_model(params):
     params_ = params.copy()
     model_type = params_.pop('model_type', None)
     if model_type == 'ScoreNetworkX':
-        model = ScoreNetworkX(**params_) 
+        model = ScoreNetworkX(**params_)
+    elif model_type == 'ScoreNetworkX_GMH':
+        model = ScoreNetworkX_GMH(**params_)
     elif model_type == 'ScoreNetworkA':
-        model = ScoreNetworkA(**params_) 
+        model = ScoreNetworkA(**params_)
     else:
         raise ValueError(f"Model Name <{model_type}> is Unknown")
     return model
@@ -75,19 +74,18 @@ def load_ema_from_ckpt(model, ema_state_dict, decay=0.999):
 
 
 def load_data(config, get_graph_list=False):
-    # Dataloader
-    return dataloader(config, get_graph_list)
+    if config.data.data in ['QM9', 'ZINC250k']:
+        from utils.data_loader_mol import dataloader
+        return dataloader(config, get_graph_list)
+    else:
+        from utils.data_loader import dataloader
+        return dataloader(config, get_graph_list)
 
 
 def load_batch(batch, device):
     x_b = batch[0].to(device)
     adj_b = batch[1].to(device)
     return x_b, adj_b
-
-
-def load_sample(x, samples, check_sample):
-    samples_out = quantize(adjs=samples)
-    return samples_out
 
 
 def load_sde(config_sde):
@@ -127,8 +125,13 @@ def load_sampling_fn(config_train, config_module, config_sample, device):
     else:
         get_sampler = get_pc_sampler
 
-    shape_x = (config_train.data.batch_size, max_node_num, config_train.data.max_feat_num)
-    shape_adj = (config_train.data.batch_size, max_node_num, max_node_num)
+    if config_train.data.data in ['QM9', 'ZINC250k']:
+        shape_x = (3000, max_node_num, config_train.data.max_feat_num)
+        shape_adj = (3000, max_node_num, max_node_num)
+    else:
+        shape_x = (config_train.data.batch_size, max_node_num, config_train.data.max_feat_num)
+        shape_adj = (config_train.data.batch_size, max_node_num, max_node_num)
+        
     sampling_fn = get_sampler(sde_x=sde_x, sde_adj=sde_adj, shape_x=shape_x, shape_adj=shape_adj, 
                                 predictor=config_module.predictor, corrector=config_module.corrector,
                                 snr=config_module.snr, scale_eps=config_module.scale_eps, 
@@ -138,13 +141,17 @@ def load_sampling_fn(config_train, config_module, config_sample, device):
                                 eps=config_sample.eps, device=device)
     return sampling_fn
 
-
 def load_model_params(config):
     config_m = config.model
     max_feat_num = config.data.max_feat_num
 
-    params_x = {'model_type':config_m.x, 'max_feat_num':max_feat_num, 'depth':config_m.depth, 
-                'nhid':config_m.nhid}
+    if 'GMH' in config_m.x:
+        params_x = {'model_type': config_m.type, 'max_feat_num': max_feat_num, 'depth': config_m.depth, 
+                    'nhid': config_m.nhid, 'num_linears': config_m.num_linears,
+                    'c_init': config_m.c_init, 'c_hid': config_m.c_hid, 'c_final': config_m.c_final, 
+                    'adim': config_m.adim, 'num_heads': config_m.num_heads, 'conv':config_m.conv}
+    else:
+        params_x = {'model_type':config_m.x, 'max_feat_num':max_feat_num, 'depth':config_m.depth, 'nhid':config_m.nhid}
     params_adj = {'model_type':config_m.adj, 'max_feat_num':max_feat_num, 'max_node_num':config.data.max_node_num, 
                     'nhid':config_m.nhid, 'num_layers':config_m.num_layers, 'num_linears':config_m.num_linears, 
                     'c_init':config_m.c_init, 'c_hid':config_m.c_hid, 'c_final':config_m.c_final, 
@@ -160,8 +167,10 @@ def load_ckpt(config, device, ts=None, return_ckpt=False):
     ckpt = torch.load(path, map_location=device)
     print(f'{path} loaded')
     ckpt_dict= {'config': ckpt['model_config'], 'params_x': ckpt['params_x'], 'x_state_dict': ckpt['x_state_dict'],
-                        'params_adj': ckpt['params_adj'], 'adj_state_dict': ckpt['adj_state_dict'], 
-                        'ema_x': ckpt['ema_x'], 'ema_adj': ckpt['ema_adj']}
+                'params_adj': ckpt['params_adj'], 'adj_state_dict': ckpt['adj_state_dict']}
+    if config.sample.use_ema:
+        ckpt_dict['ema_x'] = ckpt['ema_x']
+        ckpt_dict['ema_adj'] = ckpt['ema_adj']
     if return_ckpt:
         ckpt_dict['ckpt'] = ckpt
     return ckpt_dict

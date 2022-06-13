@@ -3,7 +3,7 @@ import time
 from parsers.parser import Parser
 from parsers.config import get_config
 from trainer import Trainer
-from sampler import Sampler
+from sampler import Sampler, Sampler_mol
 
 
 def main(work_type_args):
@@ -22,7 +22,10 @@ def main(work_type_args):
 
     # -------- Generation --------
     elif work_type_args.type == 'sample':
-        sampler = Sampler(config) 
+        if config.data.data in ['QM9', 'ZINC250k']:
+            sampler = Sampler_mol(config)
+        else:
+            sampler = Sampler(config) 
         sampler.sample()
         
     else:

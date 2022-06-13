@@ -1,3 +1,1 @@
-python main.py --type sample \
-                --config sample \
-                --gpu $1 
+CUDA_VISIBLE_DEVICES=$1 python main.py --type sample --config sample

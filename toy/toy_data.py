@@ -1,7 +1,5 @@
-import torch
-import pdb
 import numpy as np
-# from scipy.stats import norm, multivariate_normal
+
 
 # Mixture of 4 multivariate normal distribution
 def data_distribution(mus, covs, batch_size):
@@ -17,9 +15,7 @@ def data_distribution(mus, covs, batch_size):
 
 
 if __name__=='__main__':
-
-    from plot import plot, plot_heatmap
-    from loader import load_seed
+    from toy_loader import plot, load_seed
 
     load_seed(11)
 
@@ -33,5 +29,3 @@ if __name__=='__main__':
     p = data_distribution(mus, covs, batch_size)
 
     plot(p, 'data', 24)
-    # plot_heatmap(p, 'data', 50)
-

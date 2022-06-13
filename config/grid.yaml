@@ -32,7 +32,7 @@ model:
   c_init: 2
   c_hid: 8
   c_final: 4
-  
+
 train:
   name: test
   num_epochs: 5000

@@ -1,0 +1,47 @@
+data:
+  data: QM9
+  dir: './data'
+  batch_size: 1024
+  max_node_num: 9
+  max_feat_num: 4
+  init: atom
+
+sde:
+  x:
+    type: VE
+    beta_min: 0.1
+    beta_max: 1.0
+    num_scales: 1000
+  adj:
+    type: VE
+    beta_min: 0.1
+    beta_max: 1.0
+    num_scales: 1000
+
+model:
+  x: ScoreNetworkX
+  adj: ScoreNetworkA
+  conv: GCN
+  num_heads: 4
+  depth: 2
+  adim: 16
+  nhid: 16
+  num_layers: 3
+  num_linears: 3
+  c_init: 2
+  c_hid: 8
+  c_final: 4
+
+train:
+  name: test
+  num_epochs: 300
+  save_interval: 100
+  print_interval: 1000
+  reduce_mean: False
+  lr: 0.005
+  lr_schedule: True
+  ema: 0.999
+  weight_decay: 0.0001
+  grad_norm: 1.0
+  lr_decay: 0.999
+  eps: 1.0e-5
