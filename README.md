@@ -74,8 +74,8 @@ We provide the commands for the following tasks: Generic Graph Generation and Mo
 sh scripts/train.sh ${dataset_name} ${gpu_id} ${seed}
 ```
 
-Note that training score-based models on ZINC250k dataset requires gpu memory larger than GB
-We provide data parallel training code for training.
+<!-- Note that training score-based models on ZINC250k dataset requires gpu memory larger than GB
+We provide data parallel training code for training. -->
 
 ### Generation and Evaluation
 
