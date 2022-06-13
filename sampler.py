@@ -14,6 +14,7 @@ from utils.mol_utils import gen_mol, mols_to_smiles, load_smiles, canonicalize_s
 from moses.metrics.metrics import get_all_metrics
 
 
+# -------- Sampler for generic graph generation tasks --------
 class Sampler(object):
 
     def __init__(self, config):
@@ -88,12 +89,15 @@ class Sampler(object):
         plot_graphs_list(graphs=sample_graph_list, title=f'{self.config.ckpt}', max_num=16, save_dir=self.log_folder_name)
 
 
+# -------- Sampler for molecule generation tasks --------
 class Sampler_mol(object):
     def __init__(self, config):
         self.config = config
         self.device = load_device(self.config.gpu)
 
     def sample(self):
+
+        # -------- Load checkpoint --------
         self.ckpt_dict = load_ckpt(self.config, self.device)
         self.configt = self.ckpt_dict['config']
 
@@ -108,11 +112,13 @@ class Sampler_mol(object):
             train_log(logger, self.configt)
         sample_log(logger, self.config)
 
+        # -------- Load models --------
         self.model_x = load_model_from_ckpt(self.ckpt_dict['params_x'], self.ckpt_dict['x_state_dict'], self.device)
         self.model_adj = load_model_from_ckpt(self.ckpt_dict['params_adj'], self.ckpt_dict['adj_state_dict'], self.device)
         
         self.sampling_fn = load_sampling_fn(self.configt, self.config.sampler, self.config.sample, self.device)
 
+        # -------- Generate samples --------
         logger.log(f'GEN SEED: {self.config.sample.seed}')
         load_seed(self.config.sample.seed)
 
@@ -141,10 +147,12 @@ class Sampler_mol(object):
         gen_smiles = mols_to_smiles(gen_mols)
         gen_smiles = [smi for smi in gen_smiles if len(smi)]
         
+        # -------- Save generated molecules --------
         with open(os.path.join(self.log_dir, f'{self.log_name}.txt'), 'a') as f:
             for smiles in gen_smiles:
                 f.write(f'{smiles}\n')
 
+        # -------- Evaluation --------
         scores = get_all_metrics(gen=gen_smiles, k=len(gen_smiles), device=self.device, n_jobs=8, test=test_smiles, train=train_smiles)
         scores_nspdk = eval_graph_list(self.test_graph_list, mols_to_nx(gen_mols), methods=['nspdk'])['nspdk']
 

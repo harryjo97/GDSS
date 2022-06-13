@@ -4,6 +4,7 @@ import networkx as nx
 import numpy as np
 
 
+# -------- Mask batch of node features with 0-1 flags tensor --------
 def mask_x(x, flags):
 
     if flags is None:
@@ -11,6 +12,7 @@ def mask_x(x, flags):
     return x * flags[:,:,None]
 
 
+# -------- Mask batch of adjacency matrices with 0-1 flags tensor --------
 def mask_adjs(adjs, flags):
     """
     :param adjs:  B x N x N or B x C x N x N
@@ -27,6 +29,7 @@ def mask_adjs(adjs, flags):
     return adjs
 
 
+# -------- Create flags tensor from graph dataset --------
 def node_flags(adj, eps=1e-5):
 
     flags = torch.abs(adj).sum(-1).gt(eps).to(dtype=torch.float32)
@@ -36,6 +39,7 @@ def node_flags(adj, eps=1e-5):
     return flags
 
 
+# -------- Create initial node features --------
 def init_features(init, adjs=None, nfeat=10):
 
     if init=='zeros':
@@ -58,6 +62,7 @@ def init_features(init, adjs=None, nfeat=10):
     return mask_x(feature, flags)
 
 
+# -------- Sample initial flags tensor from the training graph set --------
 def init_flags(graph_list, config, batch_size=None):
     if batch_size is None:
         batch_size = config.data.batch_size
@@ -69,6 +74,7 @@ def init_flags(graph_list, config, batch_size=None):
     return flags
 
 
+# -------- Generate noise --------
 def gen_noise(x, flags, sym=True):
     z = torch.randn_like(x)
     if sym:
@@ -80,12 +86,15 @@ def gen_noise(x, flags, sym=True):
     return z
 
 
+# -------- Quantize generated graphs --------
 def quantize(adjs, thr=0.5):
     adjs_ = torch.where(adjs < thr, torch.zeros_like(adjs), torch.ones_like(adjs))
     return adjs_
 
 
-def quantize_mol(adjs):                         # adjs: 32, 9, 9
+# -------- Quantize generated molecules --------
+# adjs: 32 x 9 x 9
+def quantize_mol(adjs):                         
     if type(adjs).__name__ == 'Tensor':
         adjs = adjs.detach().cpu()
     else:
@@ -111,6 +120,7 @@ def adjs_to_graphs(adjs, is_cuda=False):
     return graph_list
 
 
+# -------- Check if the adjacency matrices are symmetric --------
 def check_sym(adjs, print_val=False):
     sym_error = (adjs-adjs.transpose(-1,-2)).abs().sum([0,1,2])
     if not sym_error < 1e-2:
@@ -119,6 +129,7 @@ def check_sym(adjs, print_val=False):
         print(f'{sym_error:.4e}')
 
 
+# -------- Create higher order adjacency matrices --------
 def pow_tensor(x, cnum):
     # x : B x N x N
     x_ = x.clone()
@@ -131,6 +142,7 @@ def pow_tensor(x, cnum):
     return xc
 
 
+# -------- Create padded adjacency matrices --------
 def pad_adjs(ori_adj, node_number):
     a = ori_adj
     ori_len = a.shape[-1]

@@ -141,6 +141,7 @@ def load_sampling_fn(config_train, config_module, config_sample, device):
                                 eps=config_sample.eps, device=device)
     return sampling_fn
 
+
 def load_model_params(config):
     config_m = config.model
     max_feat_num = config.data.max_feat_num
@@ -184,7 +185,7 @@ def load_model_from_ckpt(params, state_dict, device):
 
 
 def load_eval_settings(data, orbit_on=True):
-    # Settings from EDPGNN
+    # Settings for generic graph generation
     methods = ['degree', 'cluster', 'orbit', 'spectral'] 
     kernels = {'degree':gaussian_emd, 
                 'cluster':gaussian_emd, 

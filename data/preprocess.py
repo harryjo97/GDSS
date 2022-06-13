@@ -44,5 +44,5 @@ result = parser.parse(df, return_smiles=True)
 dataset = result['dataset']
 smiles = result['smiles']
 
-NumpyTupleDataset.save(f'data/{data_name}_relgcn_kekulized_ggnp.npz', dataset)
+NumpyTupleDataset.save(f'data/{data_name.lower()}_kekulized.npz', dataset)
 print('Total time:', time.strftime("%H:%M:%S", time.gmtime(time.time() - start_time)))
