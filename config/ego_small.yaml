@@ -50,8 +50,8 @@ train:
 sampler:
   predictor: Euler
   corrector: None
-  snr: 0.05
-  scale_eps: 0.4
+  snr: 0.0
+  scale_eps: 0.0
   n_steps: 1
 
 sample:

@@ -62,8 +62,8 @@ python data/preprocess_for_nspdk.py --dataset ${dataset_name}
 
 ### Configurations
 
-The configurations are in the `config/` directory in the `YAML` format. 
-Hyperparameters used in the experiments are specified in the Appendix C in our paper.
+The configurations are provided on the `config/` directory in `YAML` format. 
+Hyperparameters used in the experiments are specified in the Appendix C of our paper.
 
 
 ### Training
@@ -73,6 +73,9 @@ We provide the commands for the following tasks: Generic Graph Generation and Mo
 ```sh
 sh scripts/train.sh ${dataset_name} ${gpu_id} ${seed}
 ```
+
+Note that training score-based models on ZINC250k dataset requires gpu memory larger than GB
+We provide data parallel training code for training.
 
 ### Generation and Evaluation
 
@@ -84,10 +87,17 @@ sh scripts/sample.sh ${gpu_id}
 
 ## Pretrained checkpoints
 
-We additionally provide checkpoints of the pretrained models on the ZINC250k dataset in `checkpoints/ZINC250k` folder.
+We provide checkpoints of the pretrained models on the `checkpoints/` directory, which are used in the main experiments.
 
-+ `gdss_zinc250k.pth` is the GDSS used in the main experiments.
-+ `gdss_zinc250k_v2.pth` is the improved GDSS that uses GMH blocks instead of GCN blocks in $s_{\theta,t}$ (i.e., that uses `ScoreNetworkX_GMH` instead of `ScoreNetworkX`). The numbers of training epochs are 800 and 1000 for $s_{\theta,t}$ and $s_{\phi,t}$, respectively. For this checkpoint, use Rev. + Langevin solver and set `snr` as 0.2 and `scale_eps` as 0.8.
++ `ego_small/gdss_ego_small.pth`
++ `community_small/gdss_community_small.pth`
++ `ENZYMES/gdss_enzymes.pth`
++ `grid/gdss_grid.pth`
++ `ZINC250k/gdss_zinc250k.pth` 
+
+We also provide checkpoints of improved GDSS that uses GMH blocks instead of GCN blocks in $s_{\theta,t}$ (i.e., that uses `ScoreNetworkX_GMH` instead of `ScoreNetworkX`). The numbers of training epochs are 800 and 1000 for $s_{\theta,t}$ and $s_{\phi,t}$, respectively. For this checkpoint, use Rev. + Langevin solver and set `snr` as 0.2 and `scale_eps` as 0.8.
+
++ `gdss_zinc250k_v2.pth` 
 
 ## Citation
 
