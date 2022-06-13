@@ -8,6 +8,7 @@ toy/checkpoints/
 toy/logs/
 toy/plot/
 toy/samples/
+*.npz
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -14,3 +14,6 @@ python-dateutil==2.8.2
 scipy==1.7.1
 six==1.16.0
 pyemd==0.5.1
+
+
+requests

@@ -1,3 +1,23 @@
+# data: 
+#   data: community_small
+#   dir: './data'
+
+# ckpt: gdss_community_small
+
+# sampler:
+#   predictor: Euler
+#   corrector: Langevin
+#   snr: 0.05
+#   scale_eps: 0.7
+#   n_steps: 1
+
+# sample:
+#   use_ema: False
+#   noise_removal: True
+#   probability_flow: False
+#   eps: 1.0e-4
+#   seed: 11
+
 data: 
   data: ZINC250k
   dir: './data'

@@ -83,7 +83,7 @@ def get_transform_fn(dataset):
 def dataloader(config, get_graph_list=False):
     start_time = time()
     
-    mols = load_mol(os.path.join(config.data.dir, f'{config.data.data.lower()}_relgcn_kekulized_ggnp.npz'))
+    mols = load_mol(os.path.join(config.data.dir, f'{config.data.data.lower()}_kekulized.npz'))
 
     with open(os.path.join(config.data.dir, f'valid_idx_{config.data.data.lower()}.json')) as f:
         test_idx = json.load(f)
