@@ -3,11 +3,13 @@
 logs_sample/
 logs_train/
 samples/
-evaluation/orca/test.txt
+evaluation/orca/*.txt
+evaluation/orca/orca
 toy/checkpoints/
 toy/logs/
 toy/plot/
 toy/samples/
+data/zinc250k_test_nx.pkl
 *.npz
 
 # Byte-compiled / optimized / DLL files

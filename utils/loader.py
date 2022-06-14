@@ -26,11 +26,9 @@ def load_seed(seed):
     return seed
 
 
-def load_device(gpu):
-    use_cuda = gpu >= 0 and torch.cuda.is_available()
-    if use_cuda:
-        torch.cuda.set_device(gpu)
-        device = f'cuda:{gpu}'
+def load_device():
+    if torch.cuda.is_available():
+        device = list(range(torch.cuda.device_count()))
     else:
         device = 'cpu'
     return device
@@ -52,7 +50,12 @@ def load_model(params):
 
 def load_model_optimizer(params, config_train, device):
 
-    model = load_model(params).to(device)
+    model = load_model(params)
+    if isinstance(device, list):
+        if len(device) > 1:
+            model = torch.nn.DataParallel(model, device_ids=device)
+        model = model.to(f'cuda:{device[0]}')
+    
     optimizer = torch.optim.Adam(model.parameters(), lr=config_train.lr, 
                                     weight_decay=config_train.weight_decay)
     scheduler = None
@@ -83,8 +86,9 @@ def load_data(config, get_graph_list=False):
 
 
 def load_batch(batch, device):
-    x_b = batch[0].to(device)
-    adj_b = batch[1].to(device)
+    device_id = f'cuda:{device[0]}' if isinstance(device, list) else device
+    x_b = batch[0].to(device_id)
+    adj_b = batch[1].to(device_id)
     return x_b, adj_b
 
 
@@ -120,6 +124,8 @@ def load_sampling_fn(config_train, config_module, config_sample, device):
     sde_adj = load_sde(config_train.sde.adj)
     max_node_num  = config_train.data.max_node_num
 
+    device_id = f'cuda:{device[0]}' if isinstance(device, list) else device
+
     if config_module.predictor == 'S4':
         get_sampler = S4_solver
     else:
@@ -138,7 +144,7 @@ def load_sampling_fn(config_train, config_module, config_sample, device):
                                 n_steps=config_module.n_steps, 
                                 probability_flow=config_sample.probability_flow, 
                                 continuous=True, denoise=config_sample.noise_removal, 
-                                eps=config_sample.eps, device=device)
+                                eps=config_sample.eps, device=device_id)
     return sampling_fn
 
 
@@ -161,11 +167,12 @@ def load_model_params(config):
 
 
 def load_ckpt(config, device, ts=None, return_ckpt=False):
+    device_id = f'cuda:{device[0]}' if isinstance(device, list) else device
     ckpt_dict = {}
     if ts is not None:
         config.ckpt = ts
     path = f'./checkpoints/{config.data.data}/{config.ckpt}.pth'
-    ckpt = torch.load(path, map_location=device)
+    ckpt = torch.load(path, map_location=device_id)
     print(f'{path} loaded')
     ckpt_dict= {'config': ckpt['model_config'], 'params_x': ckpt['params_x'], 'x_state_dict': ckpt['x_state_dict'],
                 'params_adj': ckpt['params_adj'], 'adj_state_dict': ckpt['adj_state_dict']}
@@ -179,8 +186,14 @@ def load_ckpt(config, device, ts=None, return_ckpt=False):
 
 def load_model_from_ckpt(params, state_dict, device):
     model = load_model(params)
+    if 'module.' in list(state_dict.keys())[0]:
+        # strip 'module.' at front; for DataParallel models
+        state_dict = {k[7:]: v for k, v in state_dict.items()}
     model.load_state_dict(state_dict)
-    model = model.to(device)
+    if isinstance(device, list):
+        if len(device) > 1:
+            model = torch.nn.DataParallel(model, device_ids=device)
+        model = model.to(f'cuda:{device[0]}')
     return model
 
 

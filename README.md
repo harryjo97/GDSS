@@ -35,7 +35,7 @@ pip install git+https://github.com/fabriziocosta/EDeN.git --user
 
 ### 1. Preparations
 
-We provide four generic graph datasets (Ego-small, Community_small, ENZYMES, and Grid) and two molecular graph datasets (QM9 and ZINC250k). 
+We provide four **generic graph datasets** (Ego-small, Community_small, ENZYMES, and Grid) and two **molecular graph datasets** (QM9 and ZINC250k). 
 
 We additionally provide the commands for generating generic graph datasets as follows:
 
@@ -50,7 +50,7 @@ python data/preprocess.py --dataset ${dataset_name}
 python data/preprocess_for_nspdk.py --dataset ${dataset_name}
 ```
 
-For evaluation of generic graph generation tasks, run the following command to compile the ORCA program (see http://www.biolab.si/supp/orca/orca.html):
+For the evaluation of generic graph generation tasks, run the following command to compile the ORCA program (see http://www.biolab.si/supp/orca/orca.html):
 
 ```sh
 cd evaluation/orca 
@@ -68,19 +68,30 @@ Hyperparameters used in the experiments are specified in the Appendix C of our p
 
 We provide the commands for the following tasks: Generic Graph Generation and Molecule Generation.
 
+To train the score models, first modify `config/${dataset}.yaml` accordingly, then run the following command.
+
 ```sh
-sh scripts/train.sh ${dataset_name} ${gpu_id} ${seed}
+CUDA_VISIBLE_DEVICES=${gpu_ids} python main.py --type train --config ${train_config} --seed ${seed}
 ```
 
-<!-- Note that training score-based models on ZINC250k dataset requires gpu memory larger than GB -->
+for example, 
+
+```sh
+CUDA_VISIBLE_DEVICES=0 python main.py --type train --config community_small --seed 42
+```
+and
+```sh
+CUDA_VISIBLE_DEVICES=0,1 python main.py --type train --config zinc250k --seed 42
+```
 
 ### 4. Generation and Evaluation
 
-To sample graphs using the trained score models, first modify `config/sample.yaml` accordingly, then run the following command.
+To generate graphs using the trained score models, first modify `config/sample.yaml` accordingly, then run the following command.
 
 ```sh
-sh scripts/sample.sh ${gpu_id}
+CUDA_VISIBLE_DEVICES=${gpu_ids} python main.py --type sample --config sample
 ```
+
 
 ## Pretrained checkpoints
 
@@ -94,7 +105,7 @@ We provide checkpoints of the pretrained models on the `checkpoints/` directory,
 
 We also provide checkpoints of improved GDSS that uses GMH blocks instead of GCN blocks in $s_{\theta,t}$ (i.e., that uses `ScoreNetworkX_GMH` instead of `ScoreNetworkX`). The numbers of training epochs are 800 and 1000 for $s_{\theta,t}$ and $s_{\phi,t}$, respectively. For this checkpoint, use Rev. + Langevin solver and set `snr` as 0.2 and `scale_eps` as 0.8.
 
-+ `gdss_zinc250k_v2.pth` 
++ `ZINC250k/gdss_zinc250k_v2.pth` 
 
 ## Citation
 

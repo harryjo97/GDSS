@@ -22,7 +22,7 @@ class Sampler(object):
         super(Sampler, self).__init__()
 
         self.config = config
-        self.device = load_device(self.config.gpu)
+        self.device = load_device()
 
     def sample(self):
 
@@ -65,7 +65,7 @@ class Sampler(object):
         for r in range(num_sampling_rounds):
             t_start = time.time()
 
-            self.init_flags = init_flags(self.train_graph_list, self.configt).to(self.device)
+            self.init_flags = init_flags(self.train_graph_list, self.configt).to(self.device[0])
 
             x, adj, _ = self.sampling_fn(self.model_x, self.model_adj, self.init_flags)
 
@@ -93,7 +93,7 @@ class Sampler(object):
 class Sampler_mol(object):
     def __init__(self, config):
         self.config = config
-        self.device = load_device(self.config.gpu)
+        self.device = load_device()
 
     def sample(self):
 
@@ -129,7 +129,7 @@ class Sampler_mol(object):
         with open(f'data/{self.configt.data.data.lower()}_test_nx.pkl', 'rb') as f:
             self.test_graph_list = pickle.load(f)                                   # for NSPDK MMD
 
-        self.init_flags = init_flags(self.train_graph_list, self.configt, 3000).to(self.device)
+        self.init_flags = init_flags(self.train_graph_list, self.configt, 3000).to(self.device[0])
         x, adj, _ = self.sampling_fn(self.model_x, self.model_adj, self.init_flags)
         
         samples_int = quantize_mol(adj)
@@ -153,7 +153,7 @@ class Sampler_mol(object):
                 f.write(f'{smiles}\n')
 
         # -------- Evaluation --------
-        scores = get_all_metrics(gen=gen_smiles, k=len(gen_smiles), device=self.device, n_jobs=8, test=test_smiles, train=train_smiles)
+        scores = get_all_metrics(gen=gen_smiles, k=len(gen_smiles), device=self.device[0], n_jobs=8, test=test_smiles, train=train_smiles)
         scores_nspdk = eval_graph_list(self.test_graph_list, mols_to_nx(gen_mols), methods=['nspdk'])['nspdk']
 
         logger.log(f'Number of molecules: {num_mols}')

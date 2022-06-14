@@ -19,7 +19,7 @@ class Trainer(object):
         self.log_folder_name, self.log_dir, self.ckpt_dir = set_log(self.config)
 
         self.seed = load_seed(self.config.seed)
-        self.device = load_device(self.config.gpu)
+        self.device = load_device()
         self.train_loader, self.test_loader = load_data(self.config)
 
         self.params_x, self.params_adj = load_model_params(self.config)

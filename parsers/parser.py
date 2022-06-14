@@ -15,10 +15,7 @@ class Parser:
                                     required=True, help="Path of config file")
         self.parser.add_argument('--comment', type=str, default="", 
                                     help="A single line comment for the experiment")
-        self.parser.add_argument('--gpu', type=int, default=0, help="gpu")
         self.parser.add_argument('--seed', type=int, default=42)
-
-        self.parser.add_argument('--config-sample', type=str, default='None')
         
 
     def parse(self):
