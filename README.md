@@ -101,6 +101,7 @@ We provide checkpoints of the pretrained models on the `checkpoints/` directory,
 + `community_small/gdss_community_small.pth`
 + `ENZYMES/gdss_enzymes.pth`
 + `grid/gdss_grid.pth`
++ `QM9/gdss_qm9.pth`
 + `ZINC250k/gdss_zinc250k.pth` 
 
 We also provide a checkpoint of improved GDSS that uses GMH blocks instead of GCN blocks in $s_{\theta,t}$ (i.e., that uses `ScoreNetworkX_GMH` instead of `ScoreNetworkX`). The numbers of training epochs are 800 and 1000 for $s_{\theta,t}$ and $s_{\phi,t}$, respectively. For this checkpoint, use Rev. + Langevin solver and set `snr` as 0.2 and `scale_eps` as 0.8.

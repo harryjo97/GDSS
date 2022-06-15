@@ -7,6 +7,7 @@ import numpy as np
 import scipy.sparse as sp
 import argparse
 
+
 # -------- Generate community graphs --------
 def n_community(num_communities, max_nodes, p_inter=0.05):
     # -------- From Niu et al. (2020) --------

@@ -1,4 +1,3 @@
-import torch
 from torch.utils.data import TensorDataset, DataLoader
 from data.data_generators import load_dataset
 from utils.graph_utils import init_features, graphs_to_tensor

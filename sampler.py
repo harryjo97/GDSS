@@ -16,16 +16,13 @@ from moses.metrics.metrics import get_all_metrics
 
 # -------- Sampler for generic graph generation tasks --------
 class Sampler(object):
-
     def __init__(self, config):
-
         super(Sampler, self).__init__()
 
         self.config = config
         self.device = load_device()
 
     def sample(self):
-
         # -------- Load checkpoint --------
         self.ckpt_dict = load_ckpt(self.config, self.device)
         self.configt = self.ckpt_dict['config']
@@ -96,7 +93,6 @@ class Sampler_mol(object):
         self.device = load_device()
 
     def sample(self):
-
         # -------- Load checkpoint --------
         self.ckpt_dict = load_ckpt(self.config, self.device)
         self.configt = self.ckpt_dict['config']

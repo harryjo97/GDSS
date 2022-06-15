@@ -10,9 +10,7 @@ from utils.logger import Logger, set_log, start_log, train_log
 
 
 class Trainer(object):
-
     def __init__(self, config):
-
         super(Trainer, self).__init__()
 
         self.config = config
@@ -25,7 +23,6 @@ class Trainer(object):
         self.params_x, self.params_adj = load_model_params(self.config)
     
     def train(self, ts):
-
         self.config.exp_name = ts
         self.ckpt = f'{ts}'
         print('\033[91m' + f'{self.ckpt}' + '\033[0m')

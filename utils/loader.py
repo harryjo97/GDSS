@@ -49,7 +49,6 @@ def load_model(params):
 
 
 def load_model_optimizer(params, config_train, device):
-
     model = load_model(params)
     if isinstance(device, list):
         if len(device) > 1:
