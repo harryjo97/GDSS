@@ -11,6 +11,7 @@ toy/plot/
 toy/samples/
 data/zinc250k_test_nx.pkl
 *.npz
+checkpoints/ZINC250k/test/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
