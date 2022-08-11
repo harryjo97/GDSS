@@ -125,7 +125,7 @@ class Sampler_mol(object):
         with open(f'data/{self.configt.data.data.lower()}_test_nx.pkl', 'rb') as f:
             self.test_graph_list = pickle.load(f)                                   # for NSPDK MMD
 
-        self.init_flags = init_flags(self.train_graph_list, self.configt, 3000).to(self.device[0])
+        self.init_flags = init_flags(self.train_graph_list, self.configt, 10000).to(self.device[0])
         x, adj, _ = self.sampling_fn(self.model_x, self.model_adj, self.init_flags)
         
         samples_int = quantize_mol(adj)
@@ -139,6 +139,8 @@ class Sampler_mol(object):
 
         gen_mols, num_mols_wo_correction = gen_mol(x, adj, self.configt.data.data)
         num_mols = len(gen_mols)
+
+        import pdb; pdb.set_trace()
 
         gen_smiles = mols_to_smiles(gen_mols)
         gen_smiles = [smi for smi in gen_smiles if len(smi)]
