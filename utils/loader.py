@@ -131,8 +131,8 @@ def load_sampling_fn(config_train, config_module, config_sample, device):
         get_sampler = get_pc_sampler
 
     if config_train.data.data in ['QM9', 'ZINC250k']:
-        shape_x = (3000, max_node_num, config_train.data.max_feat_num)
-        shape_adj = (3000, max_node_num, max_node_num)
+        shape_x = (10000, max_node_num, config_train.data.max_feat_num)
+        shape_adj = (10000, max_node_num, max_node_num)
     else:
         shape_x = (config_train.data.batch_size, max_node_num, config_train.data.max_feat_num)
         shape_adj = (config_train.data.batch_size, max_node_num, max_node_num)
