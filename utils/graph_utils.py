@@ -52,7 +52,7 @@ def init_features(init, adjs=None, nfeat=10):
         try:
             feature = F.one_hot(feature, num_classes=num_classes).to(torch.float32)
         except:
-            print(feature.max())
+            print(feature.max().item())
             raise NotImplementedError(f'max_feat_num mismatch')
     else:
         raise NotImplementedError(f'{init} not implemented')
