@@ -86,10 +86,14 @@ CUDA_VISIBLE_DEVICES=0,1 python main.py --type train --config zinc250k --seed 42
 
 ### 4. Generation and Evaluation
 
-To generate graphs using the trained score models, first modify `config/sample.yaml` accordingly, then run the following command.
+To generate graphs using the trained score models, run the following command.
 
 ```sh
-CUDA_VISIBLE_DEVICES=${gpu_ids} python main.py --type sample --config sample
+CUDA_VISIBLE_DEVICES=${gpu_ids} python main.py --type sample --config sample_qm9
+```
+or
+```sh
+CUDA_VISIBLE_DEVICES=${gpu_ids} python main.py --type sample --config sample_zinc250k
 ```
 
 
