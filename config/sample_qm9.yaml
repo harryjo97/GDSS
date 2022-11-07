@@ -2,7 +2,7 @@ data:
   data: QM9
   dir: './data'
 
-ckpt: new
+ckpt: gdss_qm9
 
 sampler:
   predictor: Reverse
