@@ -26,7 +26,7 @@ For molecule generation, additionally run the following command:
 
 ```sh
 conda install -c conda-forge rdkit=2020.09.1.0
-pip install git+https://github.com/fabriziocosta/EDeN.git --user
+pip install git+https://github.com/fabriziocosta/EDeN.git
 ```
 
 
