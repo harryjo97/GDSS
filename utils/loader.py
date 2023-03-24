@@ -76,7 +76,7 @@ def load_ema_from_ckpt(model, ema_state_dict, decay=0.999):
 
 
 def load_data(config, get_graph_list=False):
-    if config.data.data in ['QM9', 'ZINC250k']:
+    if config.data.data in ['QM9', 'ZINC250k','ames_train1_pos']:
         from utils.data_loader_mol import dataloader
         return dataloader(config, get_graph_list)
     else:
@@ -130,7 +130,7 @@ def load_sampling_fn(config_train, config_module, config_sample, device):
     else:
         get_sampler = get_pc_sampler
 
-    if config_train.data.data in ['QM9', 'ZINC250k']:
+    if config_train.data.data in ['QM9', 'ZINC250k','ames_train1_pos']:
         shape_x = (10000, max_node_num, config_train.data.max_feat_num)
         shape_adj = (10000, max_node_num, max_node_num)
     else:

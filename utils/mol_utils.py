@@ -38,7 +38,7 @@ def load_smiles(dataset='QM9'):
     with open(f'data/valid_idx_{dataset.lower()}.json') as f:
         test_idx = json.load(f)
     
-    if dataset == 'QM9':
+    if dataset == 'QM9' or dataset=='ames_train1_pos':
         test_idx = test_idx['valid_idxs']
         test_idx = [int(i) for i in test_idx]
     

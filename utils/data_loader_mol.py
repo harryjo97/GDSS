@@ -88,7 +88,7 @@ def dataloader(config, get_graph_list=False):
     with open(os.path.join(config.data.dir, f'valid_idx_{config.data.data.lower()}.json')) as f:
         test_idx = json.load(f)
         
-    if config.data.data == 'QM9':
+    if config.data.data == 'QM9' or 'ames_train1_pos':
         test_idx = test_idx['valid_idxs']
         test_idx = [int(i) for i in test_idx]
     

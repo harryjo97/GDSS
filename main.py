@@ -23,7 +23,7 @@ def main(work_type_args):
 
     # -------- Generation --------
     elif work_type_args.type == 'sample':
-        if config.data.data in ['QM9', 'ZINC250k']:
+        if config.data.data in ['QM9', 'ZINC250k','ames_train1_pos']:
             sampler = Sampler_mol(config)
         else:
             sampler = Sampler(config) 

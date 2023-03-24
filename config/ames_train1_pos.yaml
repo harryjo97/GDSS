@@ -26,8 +26,8 @@ model:
   depth: 2
   adim: 16
   nhid: 16
-  num_layers: 6
-  num_linears: 3
+  num_layers: 3
+  num_linears: 2
   c_init: 2
   c_hid: 8
   c_final: 4
