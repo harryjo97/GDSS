@@ -102,8 +102,8 @@ def dataloader(config, get_graph_list=False):
     test_dataset = MolDataset(test_mols, get_transform_fn(config.data.data))
 
     if get_graph_list:
-        train_mols_nx = [nx.from_numpy_matrix(np.array(adj)) for x, adj in train_dataset]
-        test_mols_nx = [nx.from_numpy_matrix(np.array(adj)) for x, adj in test_dataset]
+        train_mols_nx = [nx.DiGraph(np.array(adj)) for x, adj in train_dataset]
+        test_mols_nx = [nx.DiGraph(np.array(adj)) for x, adj in test_dataset]
         return train_mols_nx, test_mols_nx
 
     train_dataloader = DataLoader(train_dataset, batch_size=config.data.batch_size, shuffle=True)
