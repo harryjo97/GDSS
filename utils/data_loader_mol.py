@@ -57,7 +57,7 @@ def get_transform_fn(dataset):
             adj = torch.where(adj == 3, 0, adj + 1).to(torch.float32)
             return x, adj
 
-    elif dataset == 'ZINC250k':
+    elif dataset == 'ZINC250k' or  dataset=='ames_train1_pos':
         def transform(data):
             x, adj = data
             # the last place is for virtual nodes

@@ -28,7 +28,7 @@ def canonicalize_smiles(smiles):
 def load_smiles(dataset='QM9'):
     if dataset == 'QM9':
         col = 'SMILES1'
-    elif dataset == 'ZINC250k':
+    elif dataset == 'ZINC250k' or dataset=='ames_train1_pos':
         col = 'smiles'
     else:
         raise ValueError('wrong dataset name in load_smiles')

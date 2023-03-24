@@ -11,7 +11,7 @@ from utils.smile_to_graph import GGNNPreprocessor
 
 
 parser = argparse.ArgumentParser(description='')
-parser.add_argument('--dataset', type=str, default='ZINC250k', choices=['ZINC250k', 'QM9'])
+parser.add_argument('--dataset', type=str, default='ZINC250k', choices=['ZINC250k', 'QM9','ames_train1_pos'])
 args = parser.parse_args()
 
 start_time = time.time()
@@ -27,6 +27,11 @@ elif data_name == 'QM9':
     path = 'data/qm9.csv'
     smiles_col = 'SMILES1'
     label_idx = 2
+elif data_name == 'ames_train1_pos':
+    max_atoms = 38
+    path = 'data/zinc250k.csv'
+    smiles_col = 'smiles'
+    label_idx = 1
 else:
     raise ValueError(f"[ERROR] Unexpected value data_name={data_name}")
 

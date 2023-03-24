@@ -10,9 +10,9 @@ from utils.mol_utils import mols_to_nx, smiles_to_mols
 
 
 parser = argparse.ArgumentParser(description='')
-parser.add_argument('--dataset', type=str, default='ZINC250k', choices=['ZINC250k', 'QM9'])
+parser.add_argument('--dataset', type=str, default='ZINC250k', choices=['ZINC250k', 'QM9','ames_train1_pos'])
 args = parser.parse_args()
-
+print('hi')
 dataset = args.dataset
 start_time = time()
 
@@ -22,8 +22,14 @@ with open(f'data/valid_idx_{dataset.lower()}.json') as f:
 if dataset == 'QM9':
     test_idx = test_idx['valid_idxs']
     test_idx = [int(i) for i in test_idx]
+    #print(test_idx)
     col = 'SMILES1'
 elif dataset == 'ZINC250k':
+    col = 'smiles'
+elif dataset == 'ames_train1_pos':
+    test_idx = test_idx['valid_idxs']
+    test_idx = [int(i) for i in test_idx]
+    print(test_idx)
     col = 'smiles'
 else:
     raise ValueError(f"[ERROR] Unexpected value data_name={dataset}")
