@@ -214,12 +214,20 @@ class VESDE(SDE):
   def discretize(self, x, t):
     """SMLD(NCSN) discretization."""
     timestep = (t * (self.N - 1) / self.T).long()
-    sigma = self.discrete_sigmas.to(t.device)[timestep]
+    sigma = self.discrete_sigmas.to(t.device)[timestep.to(t.device)]
     adjacent_sigma = torch.where(timestep == 0, torch.zeros_like(t),
-                                 self.discrete_sigmas[timestep - 1].to(t.device))
+                                 self.discrete_sigmas.to(t.device)[timestep.to(t.device) - 1])
     f = torch.zeros_like(x)
     G = torch.sqrt(sigma ** 2 - adjacent_sigma ** 2)
     return f, G
+
+  def transition(self, x, t, dt):
+    # -------- negative timestep dt --------
+    std = torch.square(self.sigma_min * (self.sigma_max / self.sigma_min) ** t) - \
+          torch.square(self.sigma_min * (self.sigma_max / self.sigma_min) ** (t + dt)) 
+    std = torch.sqrt(std)
+    mean = x
+    return mean, std
 
   def transition(self, x, t, dt):
     # -------- negative timestep dt --------

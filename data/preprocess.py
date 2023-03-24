@@ -29,7 +29,7 @@ elif data_name == 'QM9':
     label_idx = 2
 elif data_name == 'ames_train1_pos':
     max_atoms = 38
-    path = 'data/zinc250k.csv'
+    path = 'data/ames_train1_pos.csv'
     smiles_col = 'smiles'
     label_idx = 1
 else:
