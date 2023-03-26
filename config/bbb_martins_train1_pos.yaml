@@ -3,7 +3,7 @@ data:
   dir: './data'
   batch_size: 100
   max_node_num: 60
-  max_feat_num: 10
+  max_feat_num: 11
   init: atom
 
 sde:
