@@ -64,8 +64,8 @@ def get_transform_fn(dataset):
             x, adj = data
             # the last place is for virtual nodes
             # 6: C, 7: N, 8: O, 9: F, 15: P, 16: S, 17: Cl, 35: Br, 53: I
-            zinc250k_atomic_num_list = [5,6, 7, 8, 9, 15, 16, 17, 35, 53, 0]
-            x_ = np.zeros((60, 11), dtype=np.float32)
+            zinc250k_atomic_num_list = [5,6, 7, 8, 9, 11,15, 16, 17, 35, 53, 0]
+            x_ = np.zeros((60, 12), dtype=np.float32)
             for i in range(60):
                 ind = zinc250k_atomic_num_list.index(x[i])
                 x_[i, ind] = 1.
