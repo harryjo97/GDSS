@@ -1,5 +1,5 @@
 data:
-  data: ames_train1_pos
+  data: ames_train1_neg
   dir: './data'
   batch_size: 100
   max_node_num: 60

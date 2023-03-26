@@ -28,7 +28,9 @@ def canonicalize_smiles(smiles):
 def load_smiles(dataset='QM9'):
     if dataset == 'QM9':
         col = 'SMILES1'
-    elif dataset == 'ZINC250k' or dataset=='ames_train1_pos':
+    elif dataset in ['ZINC250k','ames_train1_pos','ames_train1_neg', 'bbb_martins_train1_pos','bbb_martins_train1_neg',\
+                                'cyp1a2_veith_train1_pos','cyp1a2_veith_train1_neg','cyp2c19_veith_train1_pos','cyp2c19_veith_train1_neg',\
+                                    'herg_karim_train1_pos', 'herg_karim_train1_neg', 'lipophilicity_astrazeneca_train1_pos','lipophilicity_astrazeneca_train1_neg']:
         col = 'smiles'
     else:
         raise ValueError('wrong dataset name in load_smiles')
@@ -38,7 +40,9 @@ def load_smiles(dataset='QM9'):
     with open(f'data/valid_idx_{dataset.lower()}.json') as f:
         test_idx = json.load(f)
     
-    if dataset == 'QM9' or dataset=='ames_train1_pos':
+    if dataset in ['ZINC250k','ames_train1_pos','ames_train1_neg', 'bbb_martins_train1_pos','bbb_martins_train1_neg',\
+                                'cyp1a2_veith_train1_pos','cyp1a2_veith_train1_neg','cyp2c19_veith_train1_pos','cyp2c19_veith_train1_neg',\
+                                    'herg_karim_train1_pos', 'herg_karim_train1_neg', 'lipophilicity_astrazeneca_train1_pos','lipophilicity_astrazeneca_train1_neg']:
         test_idx = test_idx['valid_idxs']
         test_idx = [int(i) for i in test_idx]
     

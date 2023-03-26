@@ -23,7 +23,9 @@ def main(work_type_args):
 
     # -------- Generation --------
     elif work_type_args.type == 'sample':
-        if config.data.data in ['QM9', 'ZINC250k','ames_train1_pos']:
+        if config.data.data in ['QM9', 'ZINC250k','ames_train1_pos','ames_train1_neg', 'bbb_martins_train1_pos','bbb_martins_train1_neg',\
+                                'cyp1a2_veith_train1_pos','cyp1a2_veith_train1_neg','cyp2c19_veith_train1_pos','cyp2c19_veith_train1_neg',\
+                                    'herg_karim_train1_pos', 'herg_karim_train1_neg', 'lipophilicity_astrazeneca_train1_pos','lipophilicity_astrazeneca_train1_neg']:
             sampler = Sampler_mol(config)
         else:
             sampler = Sampler(config) 

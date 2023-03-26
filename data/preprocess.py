@@ -11,7 +11,9 @@ from utils.smile_to_graph import GGNNPreprocessor
 
 
 parser = argparse.ArgumentParser(description='')
-parser.add_argument('--dataset', type=str, default='ZINC250k', choices=['ZINC250k', 'QM9','ames_train1_pos'])
+parser.add_argument('--dataset', type=str, default='ZINC250k', choices=['ZINC250k', 'QM9','ames_train1_pos','ames_train1_neg', 'bbb_martins_train1_pos','bbb_martins_train1_neg',\
+                                'cyp1a2_veith_train1_pos','cyp1a2_veith_train1_neg','cyp2c19_veith_train1_pos','cyp2c19_veith_train1_neg',\
+                                    'herg_karim_train1_pos', 'herg_karim_train1_neg', 'lipophilicity_astrazeneca_train1_pos','lipophilicity_astrazeneca_train1_neg'])
 args = parser.parse_args()
 
 start_time = time.time()
@@ -27,9 +29,11 @@ elif data_name == 'QM9':
     path = 'data/qm9.csv'
     smiles_col = 'SMILES1'
     label_idx = 2
-elif data_name == 'ames_train1_pos':
-    max_atoms = 38
-    path = 'data/ames_train1_pos.csv'
+elif data_name in ['ZINC250k', 'QM9','ames_train1_pos','ames_train1_neg', 'bbb_martins_train1_pos','bbb_martins_train1_neg',\
+                                'cyp1a2_veith_train1_pos','cyp1a2_veith_train1_neg','cyp2c19_veith_train1_pos','cyp2c19_veith_train1_neg',\
+                                    'herg_karim_train1_pos', 'herg_karim_train1_neg', 'lipophilicity_astrazeneca_train1_pos','lipophilicity_astrazeneca_train1_neg']:
+    max_atoms =60
+    path = 'data/{}.csv'.format(data_name)
     smiles_col = 'smiles'
     label_idx = 1
 else:

@@ -57,14 +57,16 @@ def get_transform_fn(dataset):
             adj = torch.where(adj == 3, 0, adj + 1).to(torch.float32)
             return x, adj
 
-    elif dataset == 'ZINC250k' or  dataset=='ames_train1_pos':
+    elif dataset == 'ZINC250k' or  dataset in ['ames_train1_pos','ames_train1_neg', 'bbb_martins_train1_pos','bbb_martins_train1_neg',\
+                                'cyp1a2_veith_train1_pos','cyp1a2_veith_train1_neg','cyp2c19_veith_train1_pos','cyp2c19_veith_train1_neg',\
+                                    'herg_karim_train1_pos', 'herg_karim_train1_neg', 'lipophilicity_astrazeneca_train1_pos','lipophilicity_astrazeneca_train1_neg']:
         def transform(data):
             x, adj = data
             # the last place is for virtual nodes
             # 6: C, 7: N, 8: O, 9: F, 15: P, 16: S, 17: Cl, 35: Br, 53: I
-            zinc250k_atomic_num_list = [6, 7, 8, 9, 15, 16, 17, 35, 53, 0]
-            x_ = np.zeros((38, 10), dtype=np.float32)
-            for i in range(38):
+            zinc250k_atomic_num_list = [5,6, 7, 8, 9, 15, 16, 17, 35, 53, 0]
+            x_ = np.zeros((60, 11), dtype=np.float32)
+            for i in range(60):
                 ind = zinc250k_atomic_num_list.index(x[i])
                 x_[i, ind] = 1.
             x = torch.tensor(x_).to(torch.float32)
@@ -88,7 +90,9 @@ def dataloader(config, get_graph_list=False):
     with open(os.path.join(config.data.dir, f'valid_idx_{config.data.data.lower()}.json')) as f:
         test_idx = json.load(f)
         
-    if config.data.data == 'QM9' or 'ames_train1_pos':
+    if config.data.data  in ['QM9','ames_train1_pos','ames_train1_neg', 'bbb_martins_train1_pos','bbb_martins_train1_neg',\
+                                'cyp1a2_veith_train1_pos','cyp1a2_veith_train1_neg','cyp2c19_veith_train1_pos','cyp2c19_veith_train1_neg',\
+                                    'herg_karim_train1_pos', 'herg_karim_train1_neg', 'lipophilicity_astrazeneca_train1_pos','lipophilicity_astrazeneca_train1_neg']:
         test_idx = test_idx['valid_idxs']
         test_idx = [int(i) for i in test_idx]
     

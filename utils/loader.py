@@ -76,7 +76,9 @@ def load_ema_from_ckpt(model, ema_state_dict, decay=0.999):
 
 
 def load_data(config, get_graph_list=False):
-    if config.data.data in ['QM9', 'ZINC250k','ames_train1_pos']:
+    if config.data.data in ['QM9', 'ZINC250k','ames_train1_pos','ames_train1_neg', 'bbb_martins_train1_pos','bbb_martins_train1_neg',\
+                                'cyp1a2_veith_train1_pos','cyp1a2_veith_train1_neg','cyp2c19_veith_train1_pos','cyp2c19_veith_train1_neg',\
+                                    'herg_karim_train1_pos', 'herg_karim_train1_neg', 'lipophilicity_astrazeneca_train1_pos','lipophilicity_astrazeneca_train1_neg']:
         from utils.data_loader_mol import dataloader
         return dataloader(config, get_graph_list)
     else:
@@ -130,9 +132,45 @@ def load_sampling_fn(config_train, config_module, config_sample, device):
     else:
         get_sampler = get_pc_sampler
 
-    if config_train.data.data in ['QM9', 'ZINC250k','ames_train1_pos']:
+    if config_train.data.data in ['QM9', 'ZINC250k']:
         shape_x = (10000, max_node_num, config_train.data.max_feat_num)
         shape_adj = (10000, max_node_num, max_node_num)
+    elif config_train.data.data in ['ames_train1_pos']:
+          shape_x = (1377, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (1377, max_node_num, max_node_num)
+    elif config_train.data.data in ['ames_train1_neg']:
+          shape_x = (1170, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (1170, max_node_num, max_node_num)
+    elif config_train.data.data in ['bbb_martins_train1_pos']:
+          shape_x = (551, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (551, max_node_num, max_node_num)
+    elif config_train.data.data in ['bbb_martins_train1_neg']:
+          shape_x = (151, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (151, max_node_num, max_node_num)
+    elif config_train.data.data in ['cyp1a2_veith_train1_pos']:
+          shape_x = (2064, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (2064, max_node_num, max_node_num)
+    elif config_train.data.data in ['cyp1a2_veith_train1_neg']:
+          shape_x = (2338, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (2338, max_node_num, max_node_num)
+    elif config_train.data.data in ['cyp2c19_veith_train1_pos']:
+          shape_x = (1978, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (1978, max_node_num, max_node_num)
+    elif config_train.data.data in ['cyp2c19_veith_train1_neg']:
+          shape_x = (2455, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (2455, max_node_num, max_node_num)
+    elif config_train.data.data in ['herg_karim_train1_pos']:
+          shape_x = (2350, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (2350, max_node_num, max_node_num)
+    elif config_train.data.data in ['herg_karim_train1_neg']:
+          shape_x = (2356, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (2356, max_node_num, max_node_num)
+    elif config_train.data.data in ['lipophilicity_astrazeneca_train1_pos']:
+          shape_x = (1208, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (1208, max_node_num, max_node_num)
+    elif config_train.data.data in ['lipophilicity_astrazeneca_train1_neg']:
+          shape_x = (262, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (262, max_node_num, max_node_num)
     else:
         shape_x = (config_train.data.batch_size, max_node_num, config_train.data.max_feat_num)
         shape_adj = (config_train.data.batch_size, max_node_num, max_node_num)
