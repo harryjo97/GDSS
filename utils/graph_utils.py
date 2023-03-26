@@ -111,7 +111,7 @@ def adjs_to_graphs(adjs, is_cuda=False):
     for adj in adjs:
         if is_cuda:
             adj = adj.detach().cpu().numpy()
-        G = nx.DiGraph(adj)
+        G = nx.from_numpy_matrix(adj)
         G.remove_edges_from(nx.selfloop_edges(G))
         G.remove_nodes_from(list(nx.isolates(G)))
         if G.number_of_nodes() < 1:
