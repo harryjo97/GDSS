@@ -2,7 +2,7 @@ data:
   data: ames_train1_pos
   dir: './data'
   batch_size: 100
-  max_node_num: 60
+  max_node_num: 150
   max_feat_num: 10
   init: atom
 

@@ -2,8 +2,8 @@ data:
   data: herg_karim_train1_neg
   dir: './data'
   batch_size: 100
-  max_node_num: 133
-  max_feat_num: 12
+  max_node_num: 150
+  max_feat_num: 27
   init: atom
 
 sde:
