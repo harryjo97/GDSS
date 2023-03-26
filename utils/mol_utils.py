@@ -8,9 +8,9 @@ from rdkit import Chem, RDLogger
 RDLogger.DisableLog('rdApp.*')
 
 
-ATOM_VALENCY = {6: 4, 7: 3, 8: 2, 9: 1, 15: 3, 16: 2, 17: 1, 35: 1, 53: 1}
+ATOM_VALENCY = {5:3,6: 4, 7: 3, 8: 2, 9: 1, 15: 3, 16: 2, 17: 1, 35: 1, 53: 1}
 bond_decoder = {1: Chem.rdchem.BondType.SINGLE, 2: Chem.rdchem.BondType.DOUBLE, 3: Chem.rdchem.BondType.TRIPLE}
-AN_TO_SYMBOL = {6: 'C', 7: 'N', 8: 'O', 9: 'F', 15: 'P', 16: 'S', 17: 'Cl', 35: 'Br', 53: 'I'}
+AN_TO_SYMBOL = {5:'B',6: 'C', 7: 'N', 8: 'O', 9: 'F', 15: 'P', 16: 'S', 17: 'Cl', 35: 'Br', 53: 'I'}
 
 
 def mols_to_smiles(mols):
@@ -59,7 +59,7 @@ def gen_mol(x, adj, dataset, largest_connected_comp=True):
     if dataset == 'QM9':
         atomic_num_list = [6, 7, 8, 9, 0]
     else:
-        atomic_num_list = [6, 7, 8, 9, 15, 16, 17, 35, 53, 0]
+        atomic_num_list = [5,6, 7, 8, 9, 15, 16, 17, 35, 53, 0]
     # mols_wo_correction = [valid_mol_can_with_seg(construct_mol(x_elem, adj_elem, atomic_num_list)) for x_elem, adj_elem in zip(x, adj)]
     # mols_wo_correction = [mol for mol in mols_wo_correction if mol is not None]
     mols, num_no_correct = [], 0
