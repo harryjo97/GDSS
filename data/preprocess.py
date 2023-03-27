@@ -32,7 +32,7 @@ elif data_name == 'QM9':
 elif data_name in ['ZINC250k', 'QM9','ames_train1_pos','ames_train1_neg', 'bbb_martins_train1_pos','bbb_martins_train1_neg',\
                                 'cyp1a2_veith_train1_pos','cyp1a2_veith_train1_neg','cyp2c19_veith_train1_pos','cyp2c19_veith_train1_neg',\
                                     'herg_karim_train1_pos', 'herg_karim_train1_neg', 'lipophilicity_astrazeneca_train1_pos','lipophilicity_astrazeneca_train1_neg']:
-    max_atoms =150
+    max_atoms =70
     path = 'data/{}.csv'.format(data_name)
     smiles_col = 'smiles'
     label_idx = 1

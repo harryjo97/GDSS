@@ -9,11 +9,11 @@ RDLogger.DisableLog('rdApp.*')
 
 
 ATOM_VALENCY = {5:3,6: 4, 7: 3, 8: 2, 9: 1, 15: 3, 16: 2, 17: 1, 35: 1, 53: 1, 11:1, 1:1,28:3,80:1,\
- 78:4,14:4,34:-2,29:2,20:2,33:3,25:2, 50:4,3:1, 51:5, 24:6, 30:2, 26:2}
+ 78:4,14:4,34:-2,29:2,20:2,33:3,25:2, 50:4,3:1, 51:5, 24:6, 30:2, 26:2, 19:1, 44:1,79:1}
 bond_decoder = {1: Chem.rdchem.BondType.SINGLE, 2: Chem.rdchem.BondType.DOUBLE, 3: Chem.rdchem.BondType.TRIPLE}
 AN_TO_SYMBOL = {5:'B',6: 'C', 7: 'N', 8: 'O', 9: 'F',11:'Na', 15: 'P', 16: 'S', 17: 'Cl',\
  28:'Ni', 35: 'Br', 53: 'I', 1:'H', 80:'Hg', 78:'Pt', 14:'Si', 34:'Se', 29:'Cu', 20:'Ca', 33:'As',\
- 25:'Mn',50:'Sn', 3:'Li', 51:'Sb', 24:'Cr', 30:'Zn', 26:'Fe'}
+ 25:'Mn',50:'Sn', 3:'Li', 51:'Sb', 24:'Cr', 30:'Zn', 26:'Fe', 19:'K', 44:'Ru',79:'Au'}
 
 
 def mols_to_smiles(mols):
@@ -62,7 +62,7 @@ def gen_mol(x, adj, dataset, largest_connected_comp=True):
     if dataset == 'QM9':
         atomic_num_list = [6, 7, 8, 9, 0]
     else:
-        atomic_num_list = [1,3,5,6, 7, 8, 9, 11,14,15, 16, 17,20,24,25,26,28,29,30, 33,34,35, 50,51,53,78,80, 0]
+        atomic_num_list = [1,3,5,6, 7, 8, 9, 11,14,15, 16, 17,19,20,24,25,26,28,29,30, 33,34,35,44, 50,51,53,78,79,80, 0]
     # mols_wo_correction = [valid_mol_can_with_seg(construct_mol(x_elem, adj_elem, atomic_num_list)) for x_elem, adj_elem in zip(x, adj)]
     # mols_wo_correction = [mol for mol in mols_wo_correction if mol is not None]
     mols, num_no_correct = [], 0

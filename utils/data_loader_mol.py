@@ -64,9 +64,9 @@ def get_transform_fn(dataset):
             x, adj = data
             # the last place is for virtual nodes
             # 6: C, 7: N, 8: O, 9: F, 15: P, 16: S, 17: Cl, 35: Br, 53: I
-            zinc250k_atomic_num_list = [1,3,5,6, 7, 8, 9, 11,14,15, 16, 17, 20,24,25,26,28,29,30,33,34,35,50, 51,53, 78,80,0]
-            x_ = np.zeros((133, 29), dtype=np.float32)
-            for i in range(133):
+            zinc250k_atomic_num_list = [1,3,5,6, 7, 8, 9, 11,14,15, 16, 17, 19,20,24,25,26,28,29,30,33,34,35,44,50, 51,53, 78,79,80,0]
+            x_ = np.zeros((70, 31), dtype=np.float32)
+            for i in range(70):
                 ind = zinc250k_atomic_num_list.index(x[i])
                 x_[i, ind] = 1.
             x = torch.tensor(x_).to(torch.float32)
