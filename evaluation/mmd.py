@@ -6,7 +6,7 @@ import pyemd
 from scipy.linalg import toeplitz
 
 from sklearn.metrics.pairwise import pairwise_kernels
-from eden.graph import vectorize
+from evaluation.eden import vectorize
 
 # NOTES:
 # EMD stands for earth move distance, i.e. Wasserstein metric,
