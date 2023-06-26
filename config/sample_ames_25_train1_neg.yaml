@@ -1,8 +1,8 @@
 data:
-  data: ames_train1_neg
+  data: ames_25_train1_neg
   dir: './data'
 
-ckpt: ames_train1_neg
+ckpt: ames_25_train1_neg
 
 sampler:
   predictor: Reverse

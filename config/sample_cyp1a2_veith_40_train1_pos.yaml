@@ -1,8 +1,8 @@
 data:
-  data: cyp1a2_veith_train1_pos
+  data: cyp1a2_veith_40_train1_pos
   dir: './data'
 
-ckpt: cyp1a2_veith_train1_pos
+ckpt: cyp1a2_veith_40_train1_pos
 
 sampler:
   predictor: Reverse

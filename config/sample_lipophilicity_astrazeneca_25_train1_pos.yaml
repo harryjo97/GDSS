@@ -1,8 +1,8 @@
 data:
-  data: lipophilicity_astrazeneca_train1_pos
+  data: lipophilicity_astrazeneca_25_train1_pos
   dir: './data'
 
-ckpt: lipophilicity_astrazeneca_train1_pos
+ckpt: lipophilicity_astrazeneca_25_train1_pos
 
 sampler:
   predictor: Reverse

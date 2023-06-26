@@ -1,8 +1,8 @@
 data:
-  data: herg_karim_train1_neg
+  data: herg_karim_33_train1_neg
   dir: './data'
 
-ckpt: herg_karim_train1_neg
+ckpt: herg_karim_33_train1_neg
 
 sampler:
   predictor: Reverse

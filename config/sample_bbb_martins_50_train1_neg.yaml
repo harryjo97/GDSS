@@ -1,8 +1,8 @@
 data:
-  data: bbb_martins_neg
+  data: bbb_martins_50_train1_neg
   dir: './data'
 
-ckpt: bbb_martins_neg
+ckpt: bbb_martins_50_train1_neg
 
 sampler:
   predictor: Reverse
