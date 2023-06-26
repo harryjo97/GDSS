@@ -1,9 +1,9 @@
 data:
-  data: bbb_martins_train1_pos
+  data: bbb_martins_50_train1_pos
   dir: './data'
-  batch_size: 100
-  max_node_num: 60
-  max_feat_num: 11
+  batch_size: 25
+  max_node_num: 76
+  max_feat_num: 12
   init: atom
 
 sde:
@@ -34,7 +34,7 @@ model:
 
 train:
   name: test
-  num_epochs: 1
+  num_epochs: 100
   save_interval: 10
   print_interval: 10
   reduce_mean: False

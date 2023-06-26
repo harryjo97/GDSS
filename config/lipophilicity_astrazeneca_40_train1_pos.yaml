@@ -1,9 +1,9 @@
 data:
-  data: lipophilicity_astrazeneca_train1_pos
+  data: lipophilicity_astrazeneca_40_train1_pos
   dir: './data'
-  batch_size: 100
-  max_node_num: 150
-  max_feat_num: 27
+  batch_size: 25
+  max_node_num: 61
+  max_feat_num: 11
   init: atom
 
 sde:
@@ -34,7 +34,7 @@ model:
 
 train:
   name: test
-  num_epochs: 1
+  num_epochs: 100
   save_interval: 10
   print_interval: 10
   reduce_mean: False

@@ -1,9 +1,9 @@
 data:
-  data: cyp2c19_veith_train1_pos
+  data: cyp2c19_veith_25_train1_pos
   dir: './data'
   batch_size: 100
-  max_node_num: 150
-  max_feat_num: 27
+  max_node_num: 67
+  max_feat_num: 16
   init: atom
 
 sde:

@@ -1,9 +1,9 @@
 data:
-  data: bbb_martins_train1_neg
+  data: bbb_martins_33_train1_neg
   dir: './data'
-  batch_size: 100
-  max_node_num: 60
-  max_feat_num: 11
+  batch_size: 25
+  max_node_num: 123
+  max_feat_num: 10
   init: atom
 
 sde:

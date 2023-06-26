@@ -1,9 +1,9 @@
 data:
-  data: lipophilicity_astrazeneca_train1_neg
+  data: lipophilicity_astrazeneca_33_train1_neg
   dir: './data'
   batch_size: 50
-  max_node_num: 70
-  max_feat_num: 30
+  max_node_num: 65
+  max_feat_num: 9
   init: atom
 
 sde:

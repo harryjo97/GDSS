@@ -1,9 +1,9 @@
 data:
-  data: herg_karim_train1_pos
+  data: herg_karim_33_train1_pos
   dir: './data'
   batch_size: 100
-  max_node_num: 150
-  max_feat_num: 27
+  max_node_num: 50
+  max_feat_num: 9
   init: atom
 
 sde:
