@@ -125,7 +125,7 @@ class Sampler_mol(object):
         with open(f'data/{self.configt.data.data.lower()}_test_nx.pkl', 'rb') as f:
             self.test_graph_list = pickle.load(f)                                   # for NSPDK MMD
 
-        self.init_flags = init_flags(self.train_graph_list, self.configt, 10000).to(self.device[0])
+        self.init_flags = init_flags(self.train_graph_list, self.configt, 1738).to(self.device[0])
         x, adj, _ = self.sampling_fn(self.model_x, self.model_adj, self.init_flags)
         
         samples_int = quantize_mol(adj)
@@ -144,7 +144,7 @@ class Sampler_mol(object):
         gen_smiles = [smi for smi in gen_smiles if len(smi)]
         
         # -------- Save generated molecules --------
-        with open(os.path.join(self.log_dir, f'{self.log_name}.txt'), 'a') as f:
+        with open(f'{self.config.data.data}_gdss.txt'.replace('train1', 'gen'), 'a') as f:
             for smiles in gen_smiles:
                 f.write(f'{smiles}\n')
 
