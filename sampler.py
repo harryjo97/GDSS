@@ -58,7 +58,7 @@ class Sampler(object):
         load_seed(self.config.sample.seed)
 
         num_sampling_rounds = math.ceil(len(self.test_graph_list) / self.configt.data.batch_size)
-        num_sampling_rounds=2
+        num_sampling_rounds=4
         gen_graph_list = []
         for r in range(num_sampling_rounds):
             t_start = time.time()
