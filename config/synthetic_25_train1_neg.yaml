@@ -1,10 +1,10 @@
 data: 
-  data: ego_small
+  data: synthetic_25_train1_neg
   dir: './data'
-  batch_size: 120 
-  test_split: 0.2
-  max_node_num: 18
-  max_feat_num: 17
+  batch_size: 10 
+  test_split: 0
+  max_node_num: 100
+  max_feat_num: 5
   init: deg
 
 sde:
