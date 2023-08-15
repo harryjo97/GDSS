@@ -58,6 +58,7 @@ class Sampler(object):
         load_seed(self.config.sample.seed)
 
         num_sampling_rounds = math.ceil(len(self.test_graph_list) / self.configt.data.batch_size)
+        num_sampling_rounds=2
         gen_graph_list = []
         for r in range(num_sampling_rounds):
             t_start = time.time()
@@ -71,19 +72,23 @@ class Sampler(object):
             samples_int = quantize(adj)
             gen_graph_list.extend(adjs_to_graphs(samples_int, True))
 
-        gen_graph_list = gen_graph_list[:len(self.test_graph_list)]
+        gen_graph_list = gen_graph_list#[:len(self.test_graph_list)]
 
         # -------- Evaluation --------
+        import networkx as nx
+        test_graph_list=[nx.Graph(nx.DiGraph(g)) for g in  self.test_graph_list]
+        print(len(test_graph_list))
+        print(len(gen_graph_list))
         methods, kernels = load_eval_settings(self.config.data.data)
-        result_dict = eval_graph_list(self.test_graph_list, gen_graph_list, methods=methods, kernels=kernels)
-        logger.log(f'MMD_full {result_dict}', verbose=False)
+        #result_dict = eval_graph_list(test_graph_list, gen_graph_list, methods=methods, kernels=kernels)
+        #logger.log(f'MMD_full {result_dict}', verbose=False)
         logger.log('='*100)
 
         # -------- Save samples --------
         save_dir = save_graph_list(self.log_folder_name, self.log_name, gen_graph_list)
         with open(save_dir, 'rb') as f:
             sample_graph_list = pickle.load(f)
-        plot_graphs_list(graphs=sample_graph_list, title=f'{self.config.ckpt}', max_num=16, save_dir=self.log_folder_name)
+        #plot_graphs_list(graphs=sample_graph_list, title=f'{self.config.ckpt}', max_num=16, save_dir=self.log_folder_name)
 
 
 # -------- Sampler for molecule generation tasks --------

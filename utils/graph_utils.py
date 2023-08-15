@@ -45,7 +45,7 @@ def node_flags(adj, eps=1e-5):
 def init_features(init, adjs=None, nfeat=10):
     #print(adjs.size(0),adjs.size(-1))
     if init=='zeros':
-        feature = torch.zeros((adjs.size(0), adjs.size(1), nfeat), dtype=torch.float32, device=adjs.device)
+        feature = torch.zeros((adjs.size(0), adjs.size(1), nfeat), dtype=torch.float, device=adjs.device)
     elif init=='ones':
         feature = torch.ones((adjs.size(0), adjs.size(-1), nfeat), dtype=torch.float, device=adjs.device)
     elif init=='deg':

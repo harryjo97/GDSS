@@ -1,11 +1,12 @@
 data: 
   data: ba2motif_25_train1_neg
   dir: './data'
-  batch_size: 30 
-  test_split: 0
+  batch_size: 20 
+  test_split: 1
   max_node_num: 25
-  max_feat_num: 5
-  init: deg
+  max_feat_num: 25
+
+  init: ones
 
 sde:
   x: 
@@ -36,7 +37,7 @@ model:
 train:
   name: test
   num_epochs: 5000
-  save_interval: 5000
+  save_interval: 1000
   print_interval: 1000
   reduce_mean: False
   lr: 0.01

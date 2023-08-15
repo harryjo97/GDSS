@@ -16,7 +16,7 @@ def graphs_to_dataloader(config, graph_list):
 def dataloader(config, get_graph_list=False):
     graph_list = load_dataset(data_dir=config.data.dir, file_name=config.data.data)
     test_size = int(config.data.test_split * len(graph_list))
-    train_graph_list= graph_list[test_size:]
+    train_graph_list= graph_list
     test_graph_list =load_dataset(data_dir=config.data.dir, file_name=config.data.data+'_test')
     if get_graph_list:
         return train_graph_list, test_graph_list

@@ -1,11 +1,12 @@
 data: 
   data: ba2motif_33_train1_neg
   dir: './data'
-  batch_size: 30 
-  test_split: 0
+  batch_size: 20 
+  test_split: 1
   max_node_num: 25
-  max_feat_num: 5
-  init: deg
+  max_feat_num: 25
+
+  init: ones
 
 sde:
   x: 
