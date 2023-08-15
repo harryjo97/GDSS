@@ -8,8 +8,10 @@ import numpy as np
 def mask_x(x, flags):
 
     if flags is None:
-        flags = torch.ones((x.shape[0], x.shape[1]), device=x.device)
-    return x * flags[:,:,None]
+        flags = torch.ones((x.shape[0], x.shape[-1]), device=x.device)
+
+    #print (x.shape, flags.shape)
+    return x 
 
 
 # -------- Mask batch of adjacency matrices with 0-1 flags tensor --------
@@ -32,7 +34,7 @@ def mask_adjs(adjs, flags):
 # -------- Create flags tensor from graph dataset --------
 def node_flags(adj, eps=1e-5):
 
-    flags = torch.abs(adj).sum(-1).gt(eps).to(dtype=torch.float32)
+    flags = torch.abs(adj).sum(-1).gt(eps).to(dtype=torch.float)
 
     if len(flags.shape)==3:
         flags = flags[:,0,:]
@@ -41,16 +43,19 @@ def node_flags(adj, eps=1e-5):
 
 # -------- Create initial node features --------
 def init_features(init, adjs=None, nfeat=10):
-
+    #print(adjs.size(0),adjs.size(-1))
     if init=='zeros':
         feature = torch.zeros((adjs.size(0), adjs.size(1), nfeat), dtype=torch.float32, device=adjs.device)
     elif init=='ones':
-        feature = torch.ones((adjs.size(0), adjs.size(1), nfeat), dtype=torch.float32, device=adjs.device)
+        feature = torch.ones((adjs.size(0), adjs.size(-1), nfeat), dtype=torch.float, device=adjs.device)
     elif init=='deg':
-        feature = adjs.sum(dim=-1).to(torch.long)
+        feature = torch.as_tensor(adjs.sum(dim=-1).to(torch.float))
         num_classes = nfeat
+        #print(num_classes)
+        feature = F.one_hot(feature, num_classes=num_classes).to(torch.float)
+        #print('We got here')
         try:
-            feature = F.one_hot(feature, num_classes=num_classes).to(torch.float32)
+            feature = F.one_hot(feature, num_classes=num_classes).to(torch.float)
         except:
             print(feature.max().item())
             raise NotImplementedError(f'max_feat_num mismatch')
