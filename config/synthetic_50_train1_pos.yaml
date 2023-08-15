@@ -5,7 +5,7 @@ data:
   test_split: 0
   max_node_num: 100
   max_feat_num: 5
-  init: deg
+  init: ones
 
 sde:
   x: 
