@@ -2,7 +2,7 @@ data:
   data: cyp2c19_veith_50_train1_pos
   dir: './data'
 
-ckpt: cyp2c19_veith_50_train1_pos
+ckpt: Aug24-03:18:37_900
 
 sampler:
   predictor: Reverse

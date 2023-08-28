@@ -63,14 +63,14 @@ class Sampler(object):
         for r in range(num_sampling_rounds):
             t_start = time.time()
 
-            self.init_flags = init_flags(self.train_graph_list, self.configt).to(self.device[0])
+            self.init_flags = init_flags(self.train_graph_list, self.configt).to(self.device)
 
             x, adj, _ = self.sampling_fn(self.model_x, self.model_adj, self.init_flags)
 
             logger.log(f"Round {r} : {time.time()-t_start:.2f}s")
 
             samples_int = quantize(adj)
-            gen_graph_list.extend(adjs_to_graphs(samples_int, True))
+            gen_graph_list.extend(adjs_to_graphs(samples_int, False))
 
         gen_graph_list = gen_graph_list#[:len(self.test_graph_list)]
 
@@ -130,7 +130,7 @@ class Sampler_mol(object):
         with open(f'data/{self.configt.data.data.lower()}_test_nx.pkl', 'rb') as f:
             self.test_graph_list = pickle.load(f)                                   # for NSPDK MMD
 
-        self.init_flags = init_flags(self.train_graph_list, self.configt, 1738).to(self.device[0])
+        self.init_flags = init_flags(self.train_graph_list, self.configt, 1738).to(self.device)
         x, adj, _ = self.sampling_fn(self.model_x, self.model_adj, self.init_flags)
         
         samples_int = quantize_mol(adj)

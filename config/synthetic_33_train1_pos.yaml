@@ -1,6 +1,6 @@
 data: 
   data: synthetic_33_train1_pos
-   dir: './data'
+  dir: './data'
   batch_size: 10 
   test_split: 0
   max_node_num: 100

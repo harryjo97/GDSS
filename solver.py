@@ -153,7 +153,7 @@ class LangevinCorrector(Corrector):
 def get_pc_sampler(sde_x, sde_adj, shape_x, shape_adj, predictor='Euler', corrector='None', 
                    snr=0.1, scale_eps=1.0, n_steps=1, 
                    probability_flow=False, continuous=False,
-                   denoise=True, eps=1e-3, device='cuda'):
+                   denoise=True, eps=1e-3, device='mps'):
 
   def pc_sampler(model_x, model_adj, init_flags):
 
@@ -200,7 +200,7 @@ def get_pc_sampler(sde_x, sde_adj, shape_x, shape_adj, predictor='Euler', correc
 def S4_solver(sde_x, sde_adj, shape_x, shape_adj, predictor='None', corrector='None', 
                         snr=0.1, scale_eps=1.0, n_steps=1, 
                         probability_flow=False, continuous=False,
-                        denoise=True, eps=1e-3, device='cuda'):
+                        denoise=True, eps=1e-3, device='mps'):
 
   def s4_solver(model_x, model_adj, init_flags):
 

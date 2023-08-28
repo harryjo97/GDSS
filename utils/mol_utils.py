@@ -48,6 +48,106 @@ def load_smiles(dataset='QM9'):
     train_idx = [i for i in range(len(df)) if i not in test_idx]
 
     return list(df[col].loc[train_idx]), list(df[col].loc[test_idx])
+def get_atomic_num_list(data_name):
+
+    if data_name == 'ames_25_train1_neg':
+        atomic_num_list=[1, 35, 6, 7, 8, 9, 15, 16, 17, 53,0]
+    elif data_name == 'ames_25_train1_pos':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 15, 16, 17, 53,0]
+    elif data_name == 'ames_33_train1_neg':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 15, 16, 17, 53,0]
+    elif data_name == 'ames_33_train1_pos':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 15, 16, 17, 53,0]
+    elif data_name == 'ames_50_train1_neg':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 15, 16, 17, 53,0]
+    elif data_name == 'ames_50_train1_pos':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 15, 16, 17, 53,0]
+    elif data_name == 'ames_40_train1_neg':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 15, 16, 17, 53,0]
+    elif data_name == 'ames_40_train1_pos':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 15, 16, 17, 53,0]
+    elif data_name == 'bbb_martins_25_train1_neg':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 11, 15, 16, 17, 53,0]
+    elif data_name == 'bbb_martins_25_train1_pos':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 11, 15, 16, 17, 35, 53,0]
+    elif data_name == 'bbb_martins_33_train1_neg':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 11, 15, 16, 17,0]
+    elif data_name == 'bbb_martins_33_train1_pos':
+         atomic_num_list=[1, 35, 5, 6, 7, 8, 9, 11, 15, 16, 17,0]
+    elif data_name == 'bbb_martins_50_train1_neg':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 11, 15, 16, 17, 53,0]
+    elif data_name == 'bbb_martins_50_train1_pos':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 11, 15, 16, 17, 35, 53,0]
+    elif data_name == 'bbb_martins_40_train1_neg':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 11, 15, 16, 17, 53,0]
+    elif data_name == 'bbb_martins_40_train1_pos':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 11, 15, 16, 17, 20, 35, 53,0]     
+    elif data_name == 'cyp1a2_veith_25_train1_neg':
+         atomic_num_list=[1, 3, 6, 7, 8, 9, 11, 14, 15, 16, 17, 78, 19, 25, 26, 29, 30, 33, 34, 35, 50, 51, 53,0]
+    elif data_name == 'cyp1a2_veith_25_train1_pos':
+         atomic_num_list=[1, 6, 7, 8, 9, 11, 78, 15, 16, 17, 14, 80, 28, 29, 34, 35, 53,0]
+    elif data_name == 'cyp1a2_veith_33_train1_neg':
+         atomic_num_list=[1, 3, 6, 7, 8, 9, 11, 14, 15, 16, 17, 80, 19, 78, 25, 26, 27, 30, 33, 34, 35, 50, 51, 53,0]
+    elif data_name == 'cyp1a2_veith_33_train1_pos':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 11, 14, 15, 16, 17, 80, 29, 34, 35, 53,0]
+    elif data_name == 'cyp1a2_veith_40_train1_neg':
+         atomic_num_list=[1, 3, 6, 7, 8, 9, 11, 78, 15, 16, 17, 80, 19, 14, 24, 25, 26, 27, 30, 33, 34, 35, 51, 53,0]
+    elif data_name == 'cyp1a2_veith_40_train1_pos':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 11, 78, 15, 16, 17, 80, 14, 29, 34, 35, 53,0]
+    elif data_name == 'cyp1a2_veith_50_train1_neg':
+         atomic_num_list=[1, 3, 6, 7, 8, 9, 11, 14, 15, 16, 17, 80, 78, 20, 24, 25, 26, 29, 30, 33, 34, 35, 50, 51, 53,0]
+    elif data_name == 'cyp1a2_veith_50_train1_pos':
+         atomic_num_list=[1, 6, 7, 8, 9, 11, 78, 15, 16, 17, 14, 80, 28, 29, 34, 35, 53,0]
+    elif data_name == 'cyp2c19_veith_25_train1_neg':
+         atomic_num_list=[1, 3, 5, 6, 7, 8, 9, 11, 14, 15, 16, 17, 80, 78, 20, 26, 29, 33, 35, 50, 51, 53,0]
+    elif data_name == 'cyp2c19_veith_25_train1_pos':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 11, 78, 15, 16, 17, 80, 19, 29, 35, 53,0]
+    elif data_name == 'cyp2c19_veith_33_train1_neg':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 11, 78, 15, 16, 17, 80, 19, 28, 29, 35, 53,0]
+    elif data_name == 'cyp2c19_veith_33_train1_pos':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 11, 78, 15, 16, 17, 80, 19, 28, 29, 35, 53,0]
+    elif data_name == 'cyp2c19_veith_40_train1_neg':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 11, 78, 15, 16, 17, 14, 19, 20, 80, 25, 26, 29, 30, 33, 34, 35, 44, 50, 51, 53,0]
+    elif data_name == 'cyp2c19_veith_40_train1_pos':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 11, 14, 15, 16, 17, 80, 19, 78, 26, 29, 35, 53,0]
+    elif data_name == 'cyp2c19_veith_50_train1_neg':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 11, 78, 15, 16, 17, 14, 19, 20, 25, 26, 29, 30, 33, 34, 35, 44, 50, 51, 53,0]
+    elif data_name == 'cyp2c19_veith_50_train1_pos':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 11, 14, 15, 16, 17, 80, 19, 78, 29, 35, 53,0]
+    elif data_name == 'herg_karim_25_train1_neg':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 11, 79, 16, 17, 15, 34, 35, 53,0]
+    elif data_name == 'herg_karim_25_train1_pos':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 15, 16, 17, 53,0]
+    elif data_name == 'herg_karim_33_train1_neg':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 15, 16, 17, 34, 35, 53,0]
+    elif data_name == 'herg_karim_33_train1_pos':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 16, 17, 53,0]
+    elif data_name == 'herg_karim_40_train1_neg':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 11, 14, 15, 16, 17, 34, 35, 53,0]
+    elif data_name == 'herg_karim_40_train1_pos':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 15, 16, 17, 53,0]
+    elif data_name == 'herg_karim_50_train1_neg':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 11, 14, 15, 16, 17, 79, 34, 35, 53,0]
+    elif data_name == 'herg_karim_50_train1_pos':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 14, 16, 17, 53,0]
+    elif data_name == 'lipophilicity_astrazeneca_25_train1_neg':
+         atomic_num_list=[1, 35, 5, 6, 7, 8, 9, 16, 17, 53,0]
+    elif data_name == 'lipophilicity_astrazeneca_25_train1_pos':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 15, 16, 17,0]
+    elif data_name == 'lipophilicity_astrazeneca_33_train1_neg':
+         atomic_num_list=[1, 35, 5, 6, 7, 8, 9, 16, 17,0]
+    elif data_name == 'lipophilicity_astrazeneca_33_train1_pos':
+         atomic_num_list=[1, 6, 7, 8, 9, 14, 15, 16, 17, 34, 35, 53,0]
+    elif data_name == 'lipophilicity_astrazeneca_40_train1_neg':
+         atomic_num_list=[1, 35, 5, 6, 7, 8, 9, 16, 17, 53,0]
+    elif data_name == 'lipophilicity_astrazeneca_40_train1_pos':
+         atomic_num_list=[1, 34, 35, 5, 6, 7, 8, 9, 15, 16, 17,0]
+    elif data_name == 'lipophilicity_astrazeneca_50_train1_neg':
+         atomic_num_list=[1, 35, 5, 6, 7, 8, 9, 15, 16, 17,0]
+    elif data_name == 'lipophilicity_astrazeneca_50_train1_pos':
+         atomic_num_list=[1, 6, 7, 8, 9, 14, 15, 16, 17, 34, 35, 53,0]
+          
+    return atomic_num_list
 
 
 def gen_mol(x, adj, dataset, largest_connected_comp=True):    
@@ -58,7 +158,7 @@ def gen_mol(x, adj, dataset, largest_connected_comp=True):
     if dataset == 'QM9':
         atomic_num_list = [6, 7, 8, 9, 0]
     else:
-        atomic_num_list = [1,3,5,6, 7, 8, 9, 11,14,15, 16, 17,19,20,24,25,26,28,29,30, 33,34,35,44, 50,51,53,78,79,80, 0]
+        atomic_num_list = get_atomic_num_list(dataset)
     # mols_wo_correction = [valid_mol_can_with_seg(construct_mol(x_elem, adj_elem, atomic_num_list)) for x_elem, adj_elem in zip(x, adj)]
     # mols_wo_correction = [mol for mol in mols_wo_correction if mol is not None]
     mols, num_no_correct = [], 0

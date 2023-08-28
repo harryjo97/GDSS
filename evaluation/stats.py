@@ -249,8 +249,8 @@ METHOD_NAME_TO_FUNC = {
 
 
 def eval_torch_batch(ref_batch, pred_batch, methods=None):
-    graph_ref_list = adjs_to_graphs(ref_batch.detach().cpu().numpy())
-    graph_pred_list = adjs_to_graphs(pred_batch.detach().cpu().numpy())
+    graph_ref_list = adjs_to_graphs(ref_batch)
+    graph_pred_list = adjs_to_graphs(pred_batch)
     results = eval_graph_list(graph_ref_list, graph_pred_list, methods=methods)
     return results
 

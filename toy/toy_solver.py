@@ -84,7 +84,7 @@ class LangevinCorrector(Corrector):
 def get_pc_sampler(sde1, sde2, shape, predictor='Euler', corrector='None', 
                    snr=0.1, scale_eps=1.0, n_steps=1, sampling_steps=1,
                    probability_flow=False, continuous=False,
-                   denoise=True, eps=1e-3, device='cuda'):
+                   denoise=True, eps=1e-3, device='mps'):
 
   def pc_sampler(model1, model2):
 

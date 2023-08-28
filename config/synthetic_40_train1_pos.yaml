@@ -1,7 +1,7 @@
 data: 
   data: synthetic_40_train1_pos
-   dir: './data'
-  batch_size: 10 
+  dir: './data'
+  batch_size: 20 
   test_split: 0
   max_node_num: 100
   max_feat_num: 5

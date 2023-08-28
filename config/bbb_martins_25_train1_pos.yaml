@@ -34,12 +34,12 @@ model:
 
 train:
   name: test
-  num_epochs: 100
+  num_epochs: 11
   save_interval: 10
   print_interval: 10
   reduce_mean: False
   lr: 0.005
-  lr_schedule: True
+  lr_schedule: Trues
   ema: 0.999
   weight_decay: 0.0001
   grad_norm: 1.0

@@ -1,7 +1,7 @@
 data:
   data: ames_50_train1_pos
   dir: './data'
-  batch_size: 100
+  batch_size: 50
   max_node_num: 54
   max_feat_num: 10
   init: atom
@@ -34,8 +34,8 @@ model:
 
 train:
   name: test
-  num_epochs: 100
-  save_interval: 10
+  num_epochs: 1000
+  save_interval: 100
   print_interval: 10
   reduce_mean: False
   lr: 0.005

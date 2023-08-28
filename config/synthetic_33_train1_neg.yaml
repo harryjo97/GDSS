@@ -1,6 +1,6 @@
 data: 
   data: synthetic_33_train1_neg
-   dir: './data'
+  dir: './data'
   batch_size: 10 
   test_split: 0
   max_node_num: 100
@@ -35,8 +35,8 @@ model:
   
 train:
   name: test
-  num_epochs: 5000
-  save_interval: 5000
+  num_epochs: 5
+  save_interval: 5
   print_interval: 1000
   reduce_mean: False
   lr: 0.01

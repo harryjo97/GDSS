@@ -279,8 +279,7 @@ def generate_dataset(data_dir='data', dataset='community_small'):
    elif dataset =='ba2motif_50_train1_pos':
         suffix = ''
         print('{:s} Generating graph data {:s} {:s}'.format('-' * 20, dataset + suffix, '-' * 20))
-        graphs = load_custom_graph_list(
-            'dataset\ba2motif\ba2motif_50\ba2motif_50_train1_pos.p',
+        graphs = load_custom_graph_list(r'\dataset\ba2motif\ba2motif_50\ba2motif_50_train1_pos.p',
             min_num_nodes=25,
             max_num_nodes=25,
             name='ba2motif_50_train1_pos',
@@ -294,7 +293,7 @@ def generate_dataset(data_dir='data', dataset='community_small'):
         suffix = ''
         print('{:s} Generating graph data {:s} {:s}'.format('-' * 20, dataset + suffix, '-' * 20))
         graphs = load_custom_graph_list(
-            '/dataset/ba2motif/ba2motif_50/ba2motif_50_train1_neg.p',
+            r'/dataset/ba2motif/ba2motif_50/ba2motif_50_train1_neg.p',
             min_num_nodes=25,
             max_num_nodes=25,
             name='ba2motif_50_train1_neg',
@@ -309,7 +308,7 @@ def generate_dataset(data_dir='data', dataset='community_small'):
         suffix = ''
         print('{:s} Generating graph data {:s} {:s}'.format('-' * 20, dataset + suffix, '-' * 20))
         graphs = load_custom_graph_list(
-            'dataset\ba2motif\ba2motif_40\ba2motif_40_train1_pos.p',
+            r'dataset\ba2motif\ba2motif_40\ba2motif_40_train1_pos.p',
             min_num_nodes=25,
             max_num_nodes=25,
             name='ba2motif_40_train1_pos',
@@ -323,7 +322,7 @@ def generate_dataset(data_dir='data', dataset='community_small'):
         suffix = ''
         print('{:s} Generating graph data {:s} {:s}'.format('-' * 20, dataset + suffix, '-' * 20))
         graphs = load_custom_graph_list(
-            'dataset\ba2motif\ba2motif_40\ba2motif_40_train1_neg.p',
+            r'dataset\ba2motif\ba2motif_40\ba2motif_40_train1_neg.p',
             min_num_nodes=25,
             max_num_nodes=25,
             name='ba2motif_40_train1_neg',
@@ -339,7 +338,7 @@ def generate_dataset(data_dir='data', dataset='community_small'):
         suffix = ''
         print('{:s} Generating graph data {:s} {:s}'.format('-' * 20, dataset + suffix, '-' * 20))
         graphs = load_custom_graph_list(
-            'dataset\ba2motif\ba2motif_33\ba2motif_33_train1_pos.p',
+            r'dataset\ba2motif\ba2motif_33\ba2motif_33_train1_pos.p',
             min_num_nodes=25,
             max_num_nodes=25,
             name='ba2motif_33_train1_pos',
@@ -353,7 +352,7 @@ def generate_dataset(data_dir='data', dataset='community_small'):
         suffix = ''
         print('{:s} Generating graph data {:s} {:s}'.format('-' * 20, dataset + suffix, '-' * 20))
         graphs = load_custom_graph_list(
-            'dataset\ba2motif\ba2motif_33\ba2motif_33_train1_neg.p',
+            r'dataset\ba2motif\ba2motif_33\ba2motif_33_train1_neg.p',
             min_num_nodes=25,
             max_num_nodes=25,
             name='ba2motif_33_train1_neg',
@@ -366,7 +365,7 @@ def generate_dataset(data_dir='data', dataset='community_small'):
         suffix = ''
         print('{:s} Generating graph data {:s} {:s}'.format('-' * 20, dataset + suffix, '-' * 20))
         graphs = load_custom_graph_list(
-            'dataset\ba2motif\ba2motif_25\ba2motif_25_train1_pos.p',
+            r'dataset\ba2motif\ba2motif_25\ba2motif_25_train1_pos.p',
             min_num_nodes=25,
             max_num_nodes=25,
             name='ba2motif_25_train1_pos',
@@ -380,7 +379,7 @@ def generate_dataset(data_dir='data', dataset='community_small'):
         suffix = ''
         print('{:s} Generating graph data {:s} {:s}'.format('-' * 20, dataset + suffix, '-' * 20))
         graphs = load_custom_graph_list(
-            'dataset\ba2motif\ba2motif_25\ba2motif_25_train1_neg.p',
+            r'dataset\ba2motif\ba2motif_25\ba2motif_25_train1_neg.p',
             min_num_nodes=25,
             max_num_nodes=25,
             name='ba2motif_25_train1_neg',
@@ -389,7 +388,7 @@ def generate_dataset(data_dir='data', dataset='community_small'):
         
    elif dataset == 'syntetic_50_train1_pos':
     graphs = load_custom_graph_list(
-        'dataset\synthetic\synthetic_25\synthetic_50_train1_pos.p',
+        r'dataset\synthetic\synthetic_25\synthetic_50_train1_pos.p',
         max_num_nodes=100,
         min_num_nodes=100,
         name='synthetic_50_train1_pos',
@@ -402,7 +401,7 @@ def generate_dataset(data_dir='data', dataset='community_small'):
 
    elif dataset == 'syntetic_50_train1_neg':
     graphs = load_custom_graph_list(
-        'dataset\synthetic\synthetic_50\synthetic_50_train1_neg.p',
+        r'dataset\synthetic\synthetic_50\synthetic_50_train1_neg.p',
         max_num_nodes=100,
         min_num_nodes=100,
         name='synthetic_50_train1_neg',
@@ -411,7 +410,7 @@ def generate_dataset(data_dir='data', dataset='community_small'):
     
    elif dataset == 'syntetic_40_train1_pos':
     graphs = load_custom_graph_list(
-        'dataset\synthetic\synthetic_40\synthetic_40_train1_pos.p',
+        r'dataset\synthetic\synthetic_40\synthetic_40_train1_pos.p',
         max_num_nodes=100,
         min_num_nodes=100,
         name='synthetic_40_train1_pos',
@@ -424,7 +423,7 @@ def generate_dataset(data_dir='data', dataset='community_small'):
 
    elif dataset == 'syntetic_40_train1_neg':
     graphs = load_custom_graph_list(
-        'dataset\synthetic\synthetic_40\synthetic_40_train1_neg.p',
+        r'dataset\synthetic\synthetic_40\synthetic_40_train1_neg.p',
         max_num_nodes=100,
         min_num_nodes=100,
         name='synthetic_40_train1_neg',
@@ -433,7 +432,7 @@ def generate_dataset(data_dir='data', dataset='community_small'):
     
    elif dataset == 'syntetic_33_train1_pos':
     graphs = load_custom_graph_list(
-        'dataset\synthetic\synthetic_33\synthetic_33_train1_pos.p',
+        r'dataset\synthetic\synthetic_33\synthetic_33_train1_pos.p',
         max_num_nodes=100,
         min_num_nodes=100,
         name='synthetic_33_train1_pos',
@@ -446,7 +445,7 @@ def generate_dataset(data_dir='data', dataset='community_small'):
 
    elif dataset == 'syntetic_33_train1_neg':
     graphs = load_custom_graph_list(
-        'dataset\synthetic\synthetic_33\synthetic_33_train1_neg.p',
+        r'dataset\synthetic\synthetic_33\synthetic_33_train1_neg.p',
         max_num_nodes=100,
         min_num_nodes=100,
         name='synthetic_33_train1_neg',
@@ -455,7 +454,7 @@ def generate_dataset(data_dir='data', dataset='community_small'):
     
    elif dataset == 'syntetic_25_train1_pos':
     graphs = load_custom_graph_list(
-        'dataset\synthetic\synthetic_25\synthetic_25_train1_pos.p',
+        r'dataset\synthetic\synthetic_25\synthetic_25_train1_pos.p',
         max_num_nodes=100,
         min_num_nodes=100,
         name='synthetic_25_train1_pos',
@@ -468,7 +467,7 @@ def generate_dataset(data_dir='data', dataset='community_small'):
 
    elif dataset == 'syntetic_25_train1_neg':
     graphs = load_custom_graph_list(
-        'dataset\synthetic\synthetic_25\synthetic_25_train1_neg.p',
+        r'dataset\synthetic\synthetic_25\synthetic_25_train1_neg.p',
         max_num_nodes=100,
         min_num_nodes=100,
         name='synthetic_25_train1_neg',

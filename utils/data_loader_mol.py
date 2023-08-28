@@ -35,7 +35,206 @@ class MolDataset(Dataset):
 
     def __getitem__(self, idx):
         return self.transform(self.mols[idx])
+def get_max_atoms(data_name):
+    max_atoms=9
+    if  data_name == 'ames_25_train1_neg':
+        max_atoms=55
+    elif data_name == 'ames_25_train1_pos':
+         max_atoms=54
+    elif data_name == 'ames_33_train1_neg':
+         max_atoms=55
+    elif data_name == 'ames_33_train1_pos':
+         max_atoms=54
+    elif data_name == 'ames_50_train1_neg':
+         max_atoms=55
+    elif data_name == 'ames_50_train1_pos':
+         max_atoms=54
+    elif data_name == 'ames_40_train1_neg':
+         max_atoms=55
+    elif data_name == 'ames_40_train1_pos':
+         max_atoms=54
+    elif data_name == 'bbb_martins_25_train1_neg':
+         max_atoms=123
+    elif data_name == 'bbb_martins_25_train1_pos':
+         max_atoms=76
+    elif data_name == 'bbb_martins_33_train1_neg':
+         max_atoms=123
+    elif data_name == 'bbb_martins_33_train1_pos':
+         max_atoms=76
+    elif data_name == 'bbb_martins_50_train1_neg':
+         max_atoms=123
+    elif data_name == 'bbb_martins_50_train1_pos':
+         max_atoms=76
+    elif data_name == 'bbb_martins_40_train1_neg':
+         max_atoms=132
+    elif data_name == 'bbb_martins_40_train1_pos':
+         max_atoms=76
+    elif data_name == 'cyp1a2_veith_25_train1_neg':
+         max_atoms=123
+    elif data_name == 'cyp1a2_veith_25_train1_pos':
+         max_atoms=106
+    elif data_name == 'cyp1a2_veith_33_train1_neg':
+         max_atoms=123
+    elif data_name == 'cyp1a2_veith_33_train1_pos':
+         max_atoms=85
+    elif data_name == 'cyp1a2_veith_50_train1_neg':
+         max_atoms=123
+    elif data_name == 'cyp1a2_veith_50_train1_pos':
+         max_atoms=106
+    elif data_name == 'cyp1a2_veith_40_train1_neg':
+         max_atoms=123
+    elif data_name == 'cyp1a2_veith_40_train1_pos':
+         max_atoms=106
+    elif data_name == 'cyp2c19_veith_25_train1_neg':
+         max_atoms=85
+    elif data_name == 'cyp2c19_veith_25_train1_pos':
+         max_atoms=67
+    elif data_name == 'cyp2c19_veith_33_train1_neg':
+         max_atoms=101
+    elif data_name == 'cyp2c19_veith_33_train1_pos':
+         max_atoms=67
+    elif data_name == 'cyp2c19_veith_50_train1_neg':
+         max_atoms=101
+    elif data_name == 'cyp2c19_veith_50_train1_pos':
+         max_atoms=106
+    elif data_name == 'cyp2c19_veith_40_train1_neg':
+         max_atoms=114
+    elif data_name == 'cyp2c19_veith_40_train1_pos':
+         max_atoms=106
+    elif data_name == 'herg_karim_25_train1_neg':
+         max_atoms=58
+    elif data_name == 'herg_karim_25_train1_pos':
+         max_atoms=50
+    elif data_name == 'herg_karim_33_train1_neg':
+         max_atoms=58
+    elif data_name == 'herg_karim_33_train1_pos':
+         max_atoms=50
+    elif data_name == 'herg_karim_50_train1_neg':
+         max_atoms=58
+    elif data_name == 'herg_karim_50_train1_pos':
+         max_atoms=50
+    elif data_name == 'herg_karim_40_train1_neg':
+         max_atoms=58
+    elif data_name == 'herg_karim_40_train1_pos':
+         max_atoms=50
+    elif data_name == 'lipophilicity_astrazeneca_25_train1_neg':
+         max_atoms=115
+    elif data_name == 'lipophilicity_astrazeneca_25_train1_pos':
+         max_atoms=72
+    elif data_name == 'lipophilicity_astrazeneca_33_train1_neg':
+         max_atoms=65
+    elif data_name == 'lipophilicity_astrazeneca_33_train1_pos':
+         max_atoms=72
+    elif data_name == 'lipophilicity_astrazeneca_50_train1_neg':
+         max_atoms=115
+    elif data_name == 'lipophilicity_astrazeneca_50_train1_pos':
+         max_atoms=58
+    elif data_name == 'lipophilicity_astrazeneca_40_train1_neg':
+         max_atoms=115
+    elif data_name == 'lipophilicity_astrazeneca_40_train1_pos':
+         max_atoms=61
+    return max_atoms
 
+def get_atomic_num_list(data_name):
+
+    if data_name == 'ames_25_train1_neg':
+        atomic_num_list=[1, 35, 6, 7, 8, 9, 15, 16, 17, 53,0]
+    elif data_name == 'ames_25_train1_pos':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 15, 16, 17, 53,0]
+    elif data_name == 'ames_33_train1_neg':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 15, 16, 17, 53,0]
+    elif data_name == 'ames_33_train1_pos':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 15, 16, 17, 53,0]
+    elif data_name == 'ames_50_train1_neg':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 15, 16, 17, 53,0]
+    elif data_name == 'ames_50_train1_pos':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 15, 16, 17, 53,0]
+    elif data_name == 'ames_40_train1_neg':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 15, 16, 17, 53,0]
+    elif data_name == 'ames_40_train1_pos':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 15, 16, 17, 53,0]
+    elif data_name == 'bbb_martins_25_train1_neg':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 11, 15, 16, 17, 53,0]
+    elif data_name == 'bbb_martins_25_train1_pos':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 11, 15, 16, 17, 35, 53,0]
+    elif data_name == 'bbb_martins_33_train1_neg':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 11, 15, 16, 17,0]
+    elif data_name == 'bbb_martins_33_train1_pos':
+         atomic_num_list=[1, 35, 5, 6, 7, 8, 9, 11, 15, 16, 17,0]
+    elif data_name == 'bbb_martins_50_train1_neg':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 11, 15, 16, 17, 53,0]
+    elif data_name == 'bbb_martins_50_train1_pos':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 11, 15, 16, 17, 35, 53,0]
+    elif data_name == 'bbb_martins_40_train1_neg':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 11, 15, 16, 17, 53,0]
+    elif data_name == 'bbb_martins_40_train1_pos':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 11, 15, 16, 17, 20, 35, 53,0]     
+    elif data_name == 'cyp1a2_veith_25_train1_neg':
+         atomic_num_list=[1, 3, 6, 7, 8, 9, 11, 14, 15, 16, 17, 78, 19, 25, 26, 29, 30, 33, 34, 35, 50, 51, 53,0]
+    elif data_name == 'cyp1a2_veith_25_train1_pos':
+         atomic_num_list=[1, 6, 7, 8, 9, 11, 78, 15, 16, 17, 14, 80, 28, 29, 34, 35, 53,0]
+    elif data_name == 'cyp1a2_veith_33_train1_neg':
+         atomic_num_list=[1, 3, 6, 7, 8, 9, 11, 14, 15, 16, 17, 80, 19, 78, 25, 26, 27, 30, 33, 34, 35, 50, 51, 53,0]
+    elif data_name == 'cyp1a2_veith_33_train1_pos':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 11, 14, 15, 16, 17, 80, 29, 34, 35, 53,0]
+    elif data_name == 'cyp1a2_veith_40_train1_neg':
+         atomic_num_list=[1, 3, 6, 7, 8, 9, 11, 78, 15, 16, 17, 80, 19, 14, 24, 25, 26, 27, 30, 33, 34, 35, 51, 53,0]
+    elif data_name == 'cyp1a2_veith_40_train1_pos':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 11, 78, 15, 16, 17, 80, 14, 29, 34, 35, 53,0]
+    elif data_name == 'cyp1a2_veith_50_train1_neg':
+         atomic_num_list=[1, 3, 6, 7, 8, 9, 11, 14, 15, 16, 17, 80, 78, 20, 24, 25, 26, 29, 30, 33, 34, 35, 50, 51, 53,0]
+    elif data_name == 'cyp1a2_veith_50_train1_pos':
+         atomic_num_list=[1, 6, 7, 8, 9, 11, 78, 15, 16, 17, 14, 80, 28, 29, 34, 35, 53,0]
+    elif data_name == 'cyp2c19_veith_25_train1_neg':
+         atomic_num_list=[1, 3, 5, 6, 7, 8, 9, 11, 14, 15, 16, 17, 80, 78, 20, 26, 29, 33, 35, 50, 51, 53,0]
+    elif data_name == 'cyp2c19_veith_25_train1_pos':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 11, 78, 15, 16, 17, 80, 19, 29, 35, 53,0]
+    elif data_name == 'cyp2c19_veith_33_train1_neg':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 11, 78, 15, 16, 17, 80, 19, 28, 29, 35, 53,0]
+    elif data_name == 'cyp2c19_veith_33_train1_pos':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 11, 78, 15, 16, 17, 80, 19, 28, 29, 35, 53,0]
+    elif data_name == 'cyp2c19_veith_40_train1_neg':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 11, 78, 15, 16, 17, 14, 19, 20, 80, 25, 26, 29, 30, 33, 34, 35, 44, 50, 51, 53,0]
+    elif data_name == 'cyp2c19_veith_40_train1_pos':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 11, 14, 15, 16, 17, 80, 19, 78, 26, 29, 35, 53,0]
+    elif data_name == 'cyp2c19_veith_50_train1_neg':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 11, 78, 15, 16, 17, 14, 19, 20, 25, 26, 29, 30, 33, 34, 35, 44, 50, 51, 53,0]
+    elif data_name == 'cyp2c19_veith_50_train1_pos':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 11, 14, 15, 16, 17, 80, 19, 78, 29, 35, 53,0]
+    elif data_name == 'herg_karim_25_train1_neg':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 11, 79, 16, 17, 15, 34, 35, 53,0]
+    elif data_name == 'herg_karim_25_train1_pos':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 15, 16, 17, 53,0]
+    elif data_name == 'herg_karim_33_train1_neg':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 15, 16, 17, 34, 35, 53,0]
+    elif data_name == 'herg_karim_33_train1_pos':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 16, 17, 53,0]
+    elif data_name == 'herg_karim_40_train1_neg':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 11, 14, 15, 16, 17, 34, 35, 53,0]
+    elif data_name == 'herg_karim_40_train1_pos':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 15, 16, 17, 53,0]
+    elif data_name == 'herg_karim_50_train1_neg':
+         atomic_num_list=[1, 5, 6, 7, 8, 9, 11, 14, 15, 16, 17, 79, 34, 35, 53,0]
+    elif data_name == 'herg_karim_50_train1_pos':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 14, 16, 17, 53,0]
+    elif data_name == 'lipophilicity_astrazeneca_25_train1_neg':
+         atomic_num_list=[1, 35, 5, 6, 7, 8, 9, 16, 17, 53,0]
+    elif data_name == 'lipophilicity_astrazeneca_25_train1_pos':
+         atomic_num_list=[1, 35, 6, 7, 8, 9, 15, 16, 17,0]
+    elif data_name == 'lipophilicity_astrazeneca_33_train1_neg':
+         atomic_num_list=[1, 35, 5, 6, 7, 8, 9, 16, 17,0]
+    elif data_name == 'lipophilicity_astrazeneca_33_train1_pos':
+         atomic_num_list=[1, 6, 7, 8, 9, 14, 15, 16, 17, 34, 35, 53,0]
+    elif data_name == 'lipophilicity_astrazeneca_40_train1_neg':
+         atomic_num_list=[1, 35, 5, 6, 7, 8, 9, 16, 17, 53,0]
+    elif data_name == 'lipophilicity_astrazeneca_40_train1_pos':
+         atomic_num_list=[1, 34, 35, 5, 6, 7, 8, 9, 15, 16, 17,0]
+    elif data_name == 'lipophilicity_astrazeneca_50_train1_neg':
+         atomic_num_list=[1, 35, 5, 6, 7, 8, 9, 15, 16, 17,0]
+    elif data_name == 'lipophilicity_astrazeneca_50_train1_pos':
+         atomic_num_list=[1, 6, 7, 8, 9, 14, 15, 16, 17, 34, 35, 53,0]
+          
+    return atomic_num_list
 
 def get_transform_fn(dataset):
     if dataset == 'QM9':
@@ -46,7 +245,7 @@ def get_transform_fn(dataset):
             x_ = np.zeros((9, 5))
             indices = np.where(x >= 6, x - 6, 4)
             x_[np.arange(9), indices] = 1
-            x = torch.tensor(x_).to(torch.float32)
+            x = torch.tensor(x_).to(torch.float)
             # single, double, triple and no-bond; the last channel is for virtual edges
             adj = np.concatenate([adj[:3], 1 - np.sum(adj[:3], axis=0, keepdims=True)],
                                     axis=0).astype(np.float32)
@@ -54,7 +253,7 @@ def get_transform_fn(dataset):
             x = x[:, :-1]                               # 9, 5 (the last place is for vitual nodes) -> 9, 4 (38, 9)
             adj = torch.tensor(adj.argmax(axis=0))      # 4, 9, 9 (the last place is for vitual edges) -> 9, 9 (38, 38)
             # 0, 1, 2, 3 -> 1, 2, 3, 0; now virtual edges are denoted as 0
-            adj = torch.where(adj == 3, 0, adj + 1).to(torch.float32)
+            adj = torch.where(adj == 3, 0, adj + 1).to(torch.float)
             return x, adj
 
 
@@ -63,12 +262,12 @@ def get_transform_fn(dataset):
             x, adj = data
             # the last place is for virtual nodes
             # 6: C, 7: N, 8: O, 9: F, 15: P, 16: S, 17: Cl, 35: Br, 53: I
-            zinc250k_atomic_num_list = [1,3,5,6, 7, 8, 9, 11,14,15, 16, 17, 19,20,24,25,26,28,29,30,33,34,35,44,50, 51,53, 78,79,80,0]
-            x_ = np.zeros((70, 31), dtype=np.float32)
-            for i in range(70):
+            zinc250k_atomic_num_list = get_atomic_num_list(dataset)
+            x_ = np.zeros((get_max_atoms(dataset), len(zinc250k_atomic_num_list)), dtype=np.float32)
+            for i in range(get_max_atoms(dataset)):
                 ind = zinc250k_atomic_num_list.index(x[i])
                 x_[i, ind] = 1.
-            x = torch.tensor(x_).to(torch.float32)
+            x = torch.tensor(x_).to(torch.float)
             # single, double, triple and no-bond; the last channel is for virtual edges
             adj = np.concatenate([adj[:3], 1 - np.sum(adj[:3], axis=0, keepdims=True)],
                                  axis=0).astype(np.float32)
@@ -76,7 +275,7 @@ def get_transform_fn(dataset):
             x = x[:, :-1]                               # 9, 5 (the last place is for vitual nodes) -> 9, 4 (38, 9)
             adj = torch.tensor(adj.argmax(axis=0))      # 4, 9, 9 (the last place is for vitual edges) -> 9, 9 (38, 38)
             # 0, 1, 2, 3 -> 1, 2, 3, 0; now virtual edges are denoted as 0
-            adj = torch.where(adj == 3, 0, adj + 1).to(torch.float32)
+            adj = torch.where(adj == 3, 0, adj + 1).to(torch.float)
             return x, adj
 
     return transform

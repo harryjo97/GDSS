@@ -2,7 +2,7 @@ data:
   data: ames_25_train1_neg
   dir: './data'
 
-ckpt: ames_25_train1_neg
+ckpt: Aug22-09:38:42_900
 
 sampler:
   predictor: Reverse

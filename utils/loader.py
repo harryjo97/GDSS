@@ -29,6 +29,8 @@ def load_seed(seed):
 def load_device():
     if torch.cuda.is_available():
         device = list(range(torch.cuda.device_count()))
+    elif torch.backends.mps.is_available(): 
+         device = torch.device('mps' )
     else:
         device = 'cpu'
     return device
@@ -55,6 +57,8 @@ def load_model_optimizer(params, config_train, device):
             model = torch.nn.DataParallel(model, device_ids=device)
         model = model.to(f'cuda:{device[0]}')
     
+    elif torch.backends.mps.is_available(): 
+        model=model.to(torch.device("mps"))
     optimizer = torch.optim.Adam(model.parameters(), lr=config_train.lr, 
                                     weight_decay=config_train.weight_decay)
     scheduler = None
@@ -367,6 +371,8 @@ def load_model_from_ckpt(params, state_dict, device):
         if len(device) > 1:
             model = torch.nn.DataParallel(model, device_ids=device)
         model = model.to(f'cuda:{device[0]}')
+    elif torch.backends.mps.is_available(): 
+         model.to(torch.device("mps"))
     return model
 
 
