@@ -2,13 +2,13 @@ data:
   data: bbb_martins_33_train1_neg
   dir: './data'
 
-ckpt: bbb_martins_33_train1_neg
+ckpt: Aug21-21:28:16_900
 
 sampler:
   predictor: Reverse
   corrector: Langevin
   snr: 0.2
-  scale_eps: 0.9
+  scale_eps: 0.99
   n_steps: 1
 
 sample:

@@ -122,8 +122,12 @@ def gen_graph_list(graph_type='grid', possible_params_dict=None, corrupt_func=No
 
 def load_dataset(data_dir='data', file_name=None, need_set=False):
     file_path = os.path.join(data_dir, file_name)
-    with open(file_path + '.p', 'rb') as f:
-        graph_list = pickle.load(f)
+    try: 
+        with open(file_path + '.p', 'rb') as f:
+           graph_list = pickle.load(f)
+    except:
+          with open(file_path + '.pkl', 'rb') as f:
+            graph_list = pickle.load(f)
     return graph_list 
 
 
@@ -475,7 +479,176 @@ def generate_dataset(data_dir='data', dataset='community_small'):
         node_attributes=False,
         graph_labels=True)
 
+   elif dataset == 'synthetic_path_vs_path_50_train1_pos':
+    graphs = load_custom_graph_list(
+        'dataset\synthetic_path_vs_path\synthetic_path_vs_path_25\synthetic_path_vs_path_50_train1_pos.p',
+        min_num_nodes=20,
+        max_num_nodes=20,
+        name='synthetic_path_vs_path_50_train1_pos',
+        node_attributes=False,
+        graph_labels=True)
+    
+    #save_ego_dd_datasets(graphs, dataset.lower() + suffix)
+    #plot_graphs_list(graphs, title=dataset + suffix, save_dir='data')
 
+
+   elif dataset == 'synthetic_path_vs_path_50_train1_neg':
+    graphs = load_custom_graph_list(
+        'dataset\synthetic_path_vs_path\synthetic_path_vs_path_50\synthetic_path_vs_path_50_train1_neg.p',
+        min_num_nodes=20,
+        max_num_nodes=20,
+        name='synthetic_path_vs_path_50_train1_neg',
+        node_attributes=False,
+        graph_labels=True)
+    
+   elif dataset == 'synthetic_path_vs_path_40_train1_pos':
+    graphs = load_custom_graph_list(
+        'dataset\synthetic_path_vs_path\synthetic_path_vs_path_40\synthetic_path_vs_path_40_train1_pos.p',
+        min_num_nodes=20,
+        max_num_nodes=20,
+        name='synthetic_path_vs_path_40_train1_pos',
+        node_attributes=False,
+        graph_labels=True)
+    
+    #save_ego_dd_datasets(graphs, dataset.lower() + suffix)
+    #plot_graphs_list(graphs, title=dataset + suffix, save_dir='data')
+
+
+   elif dataset == 'synthetic_path_vs_path_40_train1_neg':
+    graphs = load_custom_graph_list(
+        'dataset\synthetic_path_vs_path\synthetic_path_vs_path_40\synthetic_path_vs_path_40_train1_neg.p',
+        min_num_nodes=20,
+        max_num_nodes=20,
+        name='synthetic_path_vs_path_40_train1_neg',
+        node_attributes=False,
+        graph_labels=True)
+    
+   elif dataset == 'synthetic_path_vs_path_33_train1_pos':
+    graphs = load_custom_graph_list(
+        'dataset\synthetic_path_vs_path\synthetic_path_vs_path_33\synthetic_path_vs_path_33_train1_pos.p',
+        min_num_nodes=20,
+        max_num_nodes=20,
+        name='synthetic_path_vs_path_33_train1_pos',
+        node_attributes=False,
+        graph_labels=True)
+    
+    #save_ego_dd_datasets(graphs, dataset.lower() + suffix)
+    #plot_graphs_list(graphs, title=dataset + suffix, save_dir='data')
+
+
+   elif dataset == 'synthetic_path_vs_path_33_train1_neg':
+    graphs = load_custom_graph_list(
+        'dataset\synthetic_path_vs_path\synthetic_path_vs_path_33\synthetic_path_vs_path_33_train1_neg.p',
+        min_num_nodes=20,
+        max_num_nodes=20,
+        name='synthetic_path_vs_path_33_train1_neg',
+        node_attributes=False,
+        graph_labels=True)
+    
+   elif dataset == 'synthetic_path_vs_path_25_train1_pos':
+    graphs = load_custom_graph_list(
+        'dataset\synthetic_path_vs_path\synthetic_path_vs_path_25\synthetic_path_vs_path_25_train1_pos.p',
+        min_num_nodes=20,
+        max_num_nodes=20,
+        name='synthetic_path_vs_path_25_train1_pos',
+        node_attributes=False,
+        graph_labels=True)
+    
+    #save_ego_dd_datasets(graphs, dataset.lower() + suffix)
+    #plot_graphs_list(graphs, title=dataset + suffix, save_dir='data')
+
+
+   elif dataset == 'synthetic_path_vs_path_25_train1_neg':
+    graphs = load_custom_graph_list(
+        'dataset\synthetic_path_vs_path\synthetic_path_vs_path_25\synthetic_path_vs_path_25_train1_neg.p',
+        min_num_nodes=20,
+        max_num_nodes=20,
+        name='synthetic_path_vs_path_25_train1_neg',
+        node_attributes=False,
+        graph_labels=True)
+   elif dataset == 'synthetic_path_vs_tree_50_train1_pos':
+    graphs = load_custom_graph_list(
+        'dataset\synthetic_path_vs_tree\synthetic_path_vs_tree_25\synthetic_path_vs_tree_50_train1_pos.p',
+        min_num_nodes=20,
+        max_num_nodes=20,
+        name='synthetic_path_vs_tree_50_train1_pos',
+        node_attributes=False,
+        graph_labels=True)
+    
+    #save_ego_dd_datasets(graphs, dataset.lower() + suffix)
+    #plot_graphs_list(graphs, title=dataset + suffix, save_dir='data')
+
+
+   elif dataset == 'synthetic_path_vs_tree_50_train1_neg':
+    graphs = load_custom_graph_list(
+        'dataset\synthetic_path_vs_tree\synthetic_path_vs_tree_50\synthetic_path_vs_tree_50_train1_neg.p',
+        min_num_nodes=20,
+        max_num_nodes=20,
+        name='synthetic_path_vs_tree_50_train1_neg',
+        node_attributes=False,
+        graph_labels=True)
+    
+   elif dataset == 'synthetic_path_vs_tree_40_train1_pos':
+    graphs = load_custom_graph_list(
+        'dataset\synthetic_path_vs_tree\synthetic_path_vs_tree_40\synthetic_path_vs_tree_40_train1_pos.p',
+        min_num_nodes=20,
+        max_num_nodes=20,
+        name='synthetic_path_vs_tree_40_train1_pos',
+        node_attributes=False,
+        graph_labels=True)
+    
+    #save_ego_dd_datasets(graphs, dataset.lower() + suffix)
+    #plot_graphs_list(graphs, title=dataset + suffix, save_dir='data')
+
+
+   elif dataset == 'synthetic_path_vs_tree_40_train1_neg':
+    graphs = load_custom_graph_list(
+        'dataset\synthetic_path_vs_tree\synthetic_path_vs_tree_40\synthetic_path_vs_tree_40_train1_neg.p',
+        min_num_nodes=20,
+        max_num_nodes=20,
+        name='synthetic_path_vs_tree_40_train1_neg',
+        node_attributes=False,
+        graph_labels=True)
+    
+   elif dataset == 'synthetic_path_vs_tree_33_train1_pos':
+    graphs = load_custom_graph_list(
+        'dataset\synthetic_path_vs_tree\synthetic_path_vs_tree_33\synthetic_path_vs_tree_33_train1_pos.p',
+        min_num_nodes=20,
+        max_num_nodes=20,
+        name='synthetic_path_vs_tree_33_train1_pos',
+        node_attributes=False,
+        graph_labels=True)
+    
+    #save_ego_dd_datasets(graphs, dataset.lower() + suffix)
+    #plot_graphs_list(graphs, title=dataset + suffix, save_dir='data')
+
+
+   elif dataset == 'synthetic_path_vs_tree_33_train1_neg':
+    graphs = load_custom_graph_list(
+        'dataset\synthetic_path_vs_tree\synthetic_path_vs_tree_33\synthetic_path_vs_tree_33_train1_neg.p',
+        min_num_nodes=20,
+        max_num_nodes=20,
+        name='synthetic_path_vs_tree_33_train1_neg',
+        node_attributes=False,
+        graph_labels=True)
+    
+   elif dataset == 'synthetic_path_vs_tree_25_train1_pos':
+    graphs = load_custom_graph_list(
+        'dataset\synthetic_path_vs_tree\synthetic_path_vs_tree_25\synthetic_path_vs_tree_25_train1_pos.p',
+        min_num_nodes=20,
+        max_num_nodes=20,
+        name='synthetic_path_vs_tree_25_train1_pos',
+        node_attributes=False,
+        graph_labels=True)
+    
+   elif dataset == 'synthetic_path_vs_tree_25_train1_neg':
+    graphs = load_custom_graph_list(
+        'dataset\synthetic_path_vs_tree\synthetic_path_vs_tree_25\synthetic_path_vs_tree_25_train1_neg.p',
+        min_num_nodes=20,
+        max_num_nodes=20,
+        name='synthetic_path_vs_tree_25_train1_neg',
+        node_attributes=False,
+        graph_labels=True)
    else:
         raise NotImplementedError(f'Dataset {datset} not supproted.')
         

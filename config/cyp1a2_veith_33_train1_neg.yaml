@@ -1,5 +1,5 @@
 data:
-  data: cyp1a2_33_veith_train1_neg
+  data: cyp1a2_veith_33_train1_neg
   dir: './data'
   batch_size: 100
   max_node_num: 123
@@ -34,7 +34,7 @@ model:
 
 train:
   name: test
-  num_epochs: 1000
+  num_epochs: 901
   save_interval: 100
   print_interval: 10
   reduce_mean: False

@@ -2,13 +2,13 @@ data:
   data: herg_karim_50_train1_neg
   dir: './data'
 
-ckpt: herg_karim_50_train1_neg
+ckpt: Aug25-18:54:29_900
 
 sampler:
   predictor: Reverse
   corrector: Langevin
   snr: 0.2
-  scale_eps: 0.9
+  scale_eps: 0.95
   n_steps: 1
 
 sample:

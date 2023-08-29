@@ -2,13 +2,13 @@ data:
   data: cyp2c19_veith_33_train1_pos
   dir: './data'
 
-ckpt: cyp2c19_veith_33_train1_pos
+ckpt: Aug23-14:49:54_900
 
 sampler:
   predictor: Reverse
   corrector: Langevin
   snr: 0.2
-  scale_eps: 0.9
+  scale_eps: 0.95
   n_steps: 1
 
 sample:

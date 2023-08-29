@@ -58,7 +58,7 @@ class Sampler(object):
         load_seed(self.config.sample.seed)
 
         num_sampling_rounds = math.ceil(len(self.test_graph_list) / self.configt.data.batch_size)
-        num_sampling_rounds=4
+        num_sampling_rounds=2
         gen_graph_list = []
         for r in range(num_sampling_rounds):
             t_start = time.time()
@@ -130,7 +130,7 @@ class Sampler_mol(object):
         with open(f'data/{self.configt.data.data.lower()}_test_nx.pkl', 'rb') as f:
             self.test_graph_list = pickle.load(f)                                   # for NSPDK MMD
 
-        self.init_flags = init_flags(self.train_graph_list, self.configt, 1738).to(self.device)
+        self.init_flags = init_flags(self.train_graph_list, self.configt, len(train_smiles)).to( device=torch.device('mps'))
         x, adj, _ = self.sampling_fn(self.model_x, self.model_adj, self.init_flags)
         
         samples_int = quantize_mol(adj)
@@ -154,7 +154,8 @@ class Sampler_mol(object):
                 f.write(f'{smiles}\n')
 
         # -------- Evaluation --------
-        scores = get_all_metrics(gen=gen_smiles, k=len(gen_smiles), device=self.device[0], n_jobs=8, test=test_smiles, train=train_smiles)
+        scores = get_all_metrics(gen=gen_smiles, k=len(gen_smiles), device='cpu', n_jobs=8, test=test_smiles, train=train_smiles)
+
         scores_nspdk = eval_graph_list(self.test_graph_list, mols_to_nx(gen_mols), methods=['nspdk'])['nspdk']
 
         logger.log(f'Number of molecules: {num_mols}')

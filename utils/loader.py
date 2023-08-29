@@ -139,119 +139,119 @@ def load_sampling_fn(config_train, config_module, config_sample, device):
         shape_adj = (10000, max_node_num, max_node_num)
 
     elif config_train.data.data in ['ames_25_train1_pos']:
-          shape_x = (2083, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (2083, max_node_num, max_node_num)
+          shape_x = (676, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (676, max_node_num, max_node_num)
     elif config_train.data.data in ['ames_25_train1_neg']:
-          shape_x = (1738, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (1738, max_node_num, max_node_num)
+          shape_x = (597, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (597, max_node_num, max_node_num)
 
     elif config_train.data.data in ['ames_33_train1_pos']:
-          shape_x = (1858, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (1858, max_node_num, max_node_num)
+          shape_x = (901, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (901, max_node_num, max_node_num)
     elif config_train.data.data in ['ames_33_train1_neg']:
-          shape_x = (1538, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (1538, max_node_num, max_node_num)
+          shape_x = (797, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (797, max_node_num, max_node_num)
 
     elif config_train.data.data in ['ames_40_train1_pos']:
-          shape_x = (1672, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (1672, max_node_num, max_node_num)
+          shape_x = (1087, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (1087, max_node_num, max_node_num)
     elif config_train.data.data in ['ames_40_train1_neg']:
-          shape_x = (1386, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (1386, max_node_num, max_node_num)
+          shape_x = (949, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (949, max_node_num, max_node_num)
 
     elif config_train.data.data in ['ames_50_train1_pos']:
-          shape_x = (1382, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (1382, max_node_num, max_node_num)
+          shape_x = (1377, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (1377, max_node_num, max_node_num)
     elif config_train.data.data in ['ames_50_train1_neg']:
-          shape_x = (1165, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (1165, max_node_num, max_node_num)
+          shape_x = (1170, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (1170, max_node_num, max_node_num)
 
 
 
     elif config_train.data.data in ['bbb_martins_25_train1_pos']:
-          shape_x = (811, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (811, max_node_num, max_node_num)
+          shape_x = (285, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (285, max_node_num, max_node_num)
     elif config_train.data.data in ['bbb_martins_25_train1_neg']:
-          shape_x = (255, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (255, max_node_num, max_node_num)
+          shape_x = (70, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (70, max_node_num, max_node_num)
 
     elif config_train.data.data in ['bbb_martins_33_train1_pos']:
-          shape_x = (735, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (735, max_node_num, max_node_num)
+          shape_x = (361, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (361, max_node_num, max_node_num)
     elif config_train.data.data in ['bbb_martins_33_train1_neg']:
-          shape_x = (213, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (213, max_node_num, max_node_num)
+          shape_x = (112, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (112, max_node_num, max_node_num)
 
     elif config_train.data.data in ['bbb_martins_40_train1_pos']:
-          shape_x = (661, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (661, max_node_num, max_node_num)
+          shape_x = (435, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (435, max_node_num, max_node_num)
     elif config_train.data.data in ['bbb_martins_40_train1_neg']:
-          shape_x = (192, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (192, max_node_num, max_node_num)
+          shape_x = (133, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (133, max_node_num, max_node_num)
 
     elif config_train.data.data in ['bbb_martins_50_train1_pos']:
-          shape_x = (545, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (545, max_node_num, max_node_num)
+          shape_x = (551, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (551, max_node_num, max_node_num)
     elif config_train.data.data in ['bbb_martins_50_train1_neg']:
-          shape_x = (166, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (166, max_node_num, max_node_num)
+          shape_x = (159, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (159, max_node_num, max_node_num)
 
 
     elif config_train.data.data in ['cyp1a2_veith_25_train1_pos']:
-          shape_x = (3012, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (3012, max_node_num, max_node_num)
+          shape_x = (1048, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (1048, max_node_num, max_node_num)
     elif config_train.data.data in ['cyp1a2_veith_25_train1_neg']:
-          shape_x = (3592, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (3592, max_node_num, max_node_num)
+          shape_x = (1153, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (1153, max_node_num, max_node_num)
 
     elif config_train.data.data in ['cyp1a2_veith_33_train1_pos']:
-          shape_x = (2702, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (2702, max_node_num, max_node_num)
+          shape_x = (1358, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (1358, max_node_num, max_node_num)
     elif config_train.data.data in ['cyp1a2_veith_33_train1_neg']:
-          shape_x = (3168, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (3168, max_node_num, max_node_num)
+          shape_x = (1577, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (1577, max_node_num, max_node_num)
 
     elif config_train.data.data in ['cyp1a2_veith_40_train1_pos']:
-          shape_x = (2456, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (2456, max_node_num, max_node_num)
+          shape_x = (1604, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (1604, max_node_num, max_node_num)
     elif config_train.data.data in ['cyp1a2_veith_40_train1_neg']:
-          shape_x = (2829, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (2829, max_node_num, max_node_num)
+          shape_x = (1916, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (1916, max_node_num, max_node_num)
        
     elif config_train.data.data in ['cyp1a2_veith_50_train1_pos']:
-          shape_x = (1996, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (1996, max_node_num, max_node_num)
+          shape_x = (2064, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (2064, max_node_num, max_node_num)
     elif config_train.data.data in ['cyp1a2_veith_50_train1_neg']:
-          shape_x = (2407, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (2407, max_node_num, max_node_num)
+          shape_x = (2338, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (2338, max_node_num, max_node_num)
 
     elif config_train.data.data in ['cyp2c19_veith_25_train1_pos']:
-          shape_x = (3077, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (3077, max_node_num, max_node_num)
+          shape_x = (986, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (986, max_node_num, max_node_num)
     elif config_train.data.data in ['cyp2c19_veith_25_train1_neg']:
-          shape_x = (3573, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (3573, max_node_num, max_node_num)
+          shape_x = (1230, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (1230, max_node_num, max_node_num)
 
     elif config_train.data.data in ['cyp2c19_veith_33_train1_pos']:
-          shape_x = (2731, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (2731, max_node_num, max_node_num)
+          shape_x = (1332, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (1332, max_node_num, max_node_num)
     elif config_train.data.data in ['cyp2c19_veith_33_train1_neg']:
-          shape_x = (3180, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (3180, max_node_num, max_node_num)
+          shape_x = (1623, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (1623, max_node_num, max_node_num)
 
     elif config_train.data.data in ['cyp2c19_veith_40_train1_pos']:
-          shape_x = (2412, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (2412, max_node_num, max_node_num)
+          shape_x = (1651, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (1651, max_node_num, max_node_num)
     elif config_train.data.data in ['cyp2c19_veith_40_train1_neg']:
-          shape_x = (2910, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (2910, max_node_num, max_node_num)
+          shape_x = (1893, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (1893, max_node_num, max_node_num)
 
     elif config_train.data.data in ['cyp2c19_veith_50_train1_pos']:
-          shape_x = (2085, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (2085, max_node_num, max_node_num)
+          shape_x = (1978, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (1978, max_node_num, max_node_num)
     elif config_train.data.data in ['cyp2c19_veith_50_train1_neg']:
-          shape_x = (2348, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (2348, max_node_num, max_node_num)
+          shape_x = (2455, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (2455, max_node_num, max_node_num)
 
 
     
@@ -263,53 +263,53 @@ def load_sampling_fn(config_train, config_module, config_sample, device):
           shape_adj = (3497, max_node_num, max_node_num)
 
     elif config_train.data.data in ['herg_karim_33_train1_pos']:
-          shape_x = (3115, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (3115, max_node_num, max_node_num)
+          shape_x = (1152, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (1152, max_node_num, max_node_num)
     elif config_train.data.data in ['herg_karim_33_train1_neg']:
-          shape_x = (3160, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (3160, max_node_num, max_node_num)
+          shape_x = (1201, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (1201, max_node_num, max_node_num)
         
     elif config_train.data.data in ['herg_karim_40_train1_pos']:
-          shape_x = (2824, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (2824, max_node_num, max_node_num)
+          shape_x = (1890, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (1890, max_node_num, max_node_num)
     elif config_train.data.data in ['herg_karim_40_train1_neg']:
-          shape_x = (2824, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (2824, max_node_num, max_node_num)
+          shape_x = (1874, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (1874, max_node_num, max_node_num)
 
     elif config_train.data.data in ['herg_karim_50_train1_pos']:
-          shape_x = (2364, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (2364, max_node_num, max_node_num)
+          shape_x = (2350, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (2350, max_node_num, max_node_num)
     elif config_train.data.data in ['herg_karim_50_train1_neg']:
-          shape_x = (2342, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (2342, max_node_num, max_node_num)
+          shape_x = (2356, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (2356, max_node_num, max_node_num)
 
     elif config_train.data.data in ['lipophilicity_astrazeneca_25_train1_pos']:
-          shape_x = (1817, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (1817, max_node_num, max_node_num)
+          shape_x = (629, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (629, max_node_num, max_node_num)
     elif config_train.data.data in ['lipophilicity_astrazeneca_25_train1_neg']:
-          shape_x = (388, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (388, max_node_num, max_node_num)
+          shape_x = (106, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (106, max_node_num, max_node_num)
  
     elif config_train.data.data in ['lipophilicity_astrazeneca_33_train1_pos']:
-          shape_x = (1622, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (1622, max_node_num, max_node_num)
+          shape_x = (824, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (824, max_node_num, max_node_num)
     elif config_train.data.data in ['lipophilicity_astrazeneca_33_train1_neg']:
-          shape_x = (338, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (338, max_node_num, max_node_num)
+          shape_x = (156, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (156, max_node_num, max_node_num)
 
     elif config_train.data.data in ['lipophilicity_astrazeneca_40_train1_pos']:
-          shape_x = (1466, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (1466, max_node_num, max_node_num)
+          shape_x = (980, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (980, max_node_num, max_node_num)
     elif config_train.data.data in ['lipophilicity_astrazeneca_40_train1_neg']:
-          shape_x = (298, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (298, max_node_num, max_node_num)
+          shape_x = (196, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (196, max_node_num, max_node_num)
  
     elif config_train.data.data in ['lipophilicity_astrazeneca_50_train1_pos']:
-          shape_x = (1238, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (1238, max_node_num, max_node_num)
+          shape_x = (1208, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (1208, max_node_num, max_node_num)
     elif config_train.data.data in ['lipophilicity_astrazeneca_50_train1_neg']:
-          shape_x = (232, max_node_num, config_train.data.max_feat_num)
-          shape_adj = (232, max_node_num, max_node_num)
+          shape_x = (262, max_node_num, config_train.data.max_feat_num)
+          shape_adj = (262, max_node_num, max_node_num)
 
     else:
         shape_x = (config_train.data.batch_size, max_node_num, config_train.data.max_feat_num)
@@ -348,7 +348,7 @@ def load_ckpt(config, device, ts=None, return_ckpt=False):
     ckpt_dict = {}
     if ts is not None:
         config.ckpt = ts
-    path = f'./checkpoints/{config.data.data}/{config.ckpt}.pth'
+    path = f'./checkpoints/{config.data.data}/{config.ckpt}_5000.pth'
     ckpt = torch.load(path, map_location=device_id)
     print(f'{path} loaded')
     ckpt_dict= {'config': ckpt['model_config'], 'params_x': ckpt['params_x'], 'x_state_dict': ckpt['x_state_dict'],

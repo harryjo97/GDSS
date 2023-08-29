@@ -2,13 +2,13 @@ data:
   data: lipophilicity_astrazeneca_40_train1_neg
   dir: './data'
 
-ckpt: lipophilicity_astrazeneca_40_train1_neg
+ckpt: Aug26-10:57:51_900
 
 sampler:
   predictor: Reverse
   corrector: Langevin
   snr: 0.2
-  scale_eps: 0.9
+  scale_eps: 0.95
   n_steps: 1
 
 sample:
