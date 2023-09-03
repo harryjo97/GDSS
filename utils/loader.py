@@ -348,7 +348,7 @@ def load_ckpt(config, device, ts=None, return_ckpt=False):
     ckpt_dict = {}
     if ts is not None:
         config.ckpt = ts
-    path = f'./checkpoints/{config.data.data}/{config.ckpt}_5000.pth'
+    path = f'./checkpoints/{config.data.data}/{config.ckpt}.pth'
     ckpt = torch.load(path, map_location=device_id)
     print(f'{path} loaded')
     ckpt_dict= {'config': ckpt['model_config'], 'params_x': ckpt['params_x'], 'x_state_dict': ckpt['x_state_dict'],
