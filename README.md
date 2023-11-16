@@ -2,7 +2,8 @@
 
 Official Code Repository for the paper [Score-based Generative Modeling of Graphs via the System of Stochastic Differential Equations](https://arxiv.org/abs/2202.02514) (ICML 2022).
 
-> <span style="color:red">UPDATE</span>: We provide an implementation of **GDSS using Graph Transformer** architecture in a separate [repository](https://github.com/DongkiKim95/GDSS-Transformer)!
+> 🔴**UPDATE**:  We provide an seperate code repo for **GDSS using Graph Transformer** [here](https://github.com/DongkiKim95/GDSS-Transformer)!
+
 
 In this repository, we implement the *Graph Diffusion via the System of SDEs* (GDSS).
 
